@@ -3,10 +3,11 @@ stages: # Ici on déclare toutes nos étapes
   - sonar
   - linter
 
-linter:
+linter-job:
   stage: linter
   image: node:16
-  tags: docker
+  tags: 
+    - docker
   script:
     - "cd sae4app"
     - "yarn lint"
