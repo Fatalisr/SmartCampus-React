@@ -1,13 +1,10 @@
-import PropTypes from "prop-types";
-
-const PageAcceuilPersonnel = (props) =>{
+import ListeSalles from "./ListeSalles.jsx";
+const PageAcceuilPersonnel = () =>{
     return(
         <>
+            <ListeSalles />
         </>
     )
 }
 
-PageAcceuilPersonnel.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
 export default PageAcceuilPersonnel
