@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {salles$} from "../../utilitaires/data_salles.js";
+
 import Salle from "./Salle.jsx";
 
 import "./../../assets/css/listeSalle.css"
@@ -8,7 +9,7 @@ const ListeSalles = () =>{
     const [salles, setSalles] = useState([]);
 
     const [filterMin, setFilterMin] = useState(0);
-    const [filterMax, setFilterMax] = useState(4);
+    const [filterMax, setFilterMax] = useState(3);
 
     const [filterName, setFilterName] = useState("");
 
@@ -17,7 +18,7 @@ const ListeSalles = () =>{
     };
 
     const handleChangeMax = (e) => {
-        setFilterMax(e.target.value)
+            setFilterMax(e.target.value)
     };
 
     const handleChangeName = (e) => {
@@ -48,11 +49,13 @@ const ListeSalles = () =>{
         <>
             <h2>Liste des Salles</h2>
             <div className={"listSalle"}>
-                <input type="number" className="search-input" placeholder="Minimum" onChange={handleChangeMin}/>
-                <input type="number" className="search-input" placeholder="Maximum" onChange={handleChangeMax}/>
+                <input type="text" className="search-input" placeholder="Minimum"   onChange={handleChangeMin}/>
+                <input type="text" className="search-input" placeholder="Maximum"   onChange={handleChangeMax}/>
                 <input type="text" className="search-input" placeholder="Rechercher" onChange={handleChangeName}/>
                 {renderFile}
             </div>
+
+
         </>
     )
 }
