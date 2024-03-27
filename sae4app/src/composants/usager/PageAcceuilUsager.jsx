@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, {useState} from "react";
-import Menu from "../app/Menu.jsx";
 import Selecteursalle from "./SelecteurSalle.jsx";
 import AfficherSalle from "../commun/AfficherSalle.jsx";
 

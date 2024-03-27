@@ -1,13 +1,14 @@
-import PropTypes from "prop-types";
 
-const PageAcceuilPersonnel = (props) =>{
+
+
+const PageAcceuilPersonnel = () =>{
+
     return(
         <>
+
         </>
     )
 }
 
-PageAcceuilPersonnel.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
+
 export default PageAcceuilPersonnel

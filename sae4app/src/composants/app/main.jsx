@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom"
-import PageConnexion from "../commun/PageConnexion.jsx";
+import PageConnexion from "./PageConnexion.jsx";
 import PageAcceuilUsager from "../usager/PageAcceuilUsager.jsx";
 import PageAcceuilPersonnel from "../personnel/PageAcceuilPersonnel.jsx";
 import PageAcceuilTechnicien from "../technicien/PageAcceuilTechnicien.jsx";
