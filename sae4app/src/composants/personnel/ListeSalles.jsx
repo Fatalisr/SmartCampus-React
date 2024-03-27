@@ -3,8 +3,26 @@ import {salles$} from "../../utilitaires/data_salles.js";
 import Salle from "./Salle.jsx";
 
 import "./../../assets/css/listeSalle.css"
+
 const ListeSalles = () =>{
     const [salles, setSalles] = useState([]);
+
+    const [filterMin, setFilterMin] = useState(0);
+    const [filterMax, setFilterMax] = useState(4);
+
+    const [filterName, setFilterName] = useState("");
+
+    const handleChangeMin = (e) => {
+        setFilterMin(e.target.value)
+    };
+
+    const handleChangeMax = (e) => {
+        setFilterMax(e.target.value)
+    };
+
+    const handleChangeName = (e) => {
+        setFilterName(e.target.value)
+    };
 
     useEffect(() => {
         salles$.then((salles) => {
@@ -12,9 +30,9 @@ const ListeSalles = () =>{
         });
     }, []);
 
+
     const toDetail = (id) => {
-        let url = '/personnel/salle/' + id
-        window.location= url
+        window.location= '/personnel/salle/' + id
     };
 
     const compareSalles = (a, b) =>{
@@ -22,14 +40,18 @@ const ListeSalles = () =>{
     }
 
     const renderFile = salles.sort(compareSalles).map(salle => {
-        return <Salle id={salle.id} nom={salle.nom} nbAlerte24h={salle.nbAlerte24h} redirection={toDetail}/>;
+        if (filterMin <= salle.nbAlerte24h && filterMax >= salle.nbAlerte24h && salle.nom.toLowerCase().includes(filterName.toLowerCase()))
+            return <Salle id={salle.id} nom={salle.nom} nbAlerte24h={salle.nbAlerte24h} redirection={toDetail}/>;
     })
 
     return(
         <>
-            <h1>Liste des Salles</h1>
+            <h2>Liste des Salles</h2>
             <div className={"listSalle"}>
-            {renderFile}
+                <input type="number" className="search-input" placeholder="Minimum" onChange={handleChangeMin}/>
+                <input type="number" className="search-input" placeholder="Maximum" onChange={handleChangeMax}/>
+                <input type="text" className="search-input" placeholder="Rechercher" onChange={handleChangeName}/>
+                {renderFile}
             </div>
         </>
     )
