@@ -11,31 +11,36 @@ import PageAcceuilPersonnel from "../personnel/PageAcceuilPersonnel.jsx";
 import PageAcceuilTechnicien from "../technicien/PageAcceuilTechnicien.jsx";
 import PageDetailSallePersonnel from "../personnel/PageDetailSallePersonnel.jsx";
 import PageDetailIntervention from "../technicien/PageDetailIntervention.jsx";
+import Menu from "./Menu.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <PageConnexion />,
+    element: <Menu/>,
     children:[
       {
+        path: "/",
+        element: <PageConnexion exampleProp={"temp"}/>
+      },
+      {
         path: "/usager", //Une meme page pour l'affichage du selecteur de salle et du composant AfficherSalle
-        element: <PageAcceuilUsager/>
+        element: <PageAcceuilUsager exampleProp={"temp"}/>
       },
       {
         path: "/personnel",
-        element: <PageAcceuilPersonnel/>,
+        element: <PageAcceuilPersonnel exampleProp={"temp"}/>,
       },
       {
         path: "/personnel/salle",
-        element: <PageDetailSallePersonnel/>,
+        element: <PageDetailSallePersonnel exampleProp={"temp"}/>,
       },
       {
         path: "/technicien",
-        element: <PageAcceuilTechnicien/>,
+        element: <PageAcceuilTechnicien exampleProp={"temp"}/>,
       },
       {
         path: "/technicien/intervention",
-        element: <PageDetailIntervention/>,
+        element: <PageDetailIntervention exampleProp={"temp"}/>,
       },
     ],
   },

@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 const PageConnexion = (props) =>{
     return(
         <>
+            <div>
+                <a href="/usager">Usager</a>
+            </div>
+
         </>
     )
 }
