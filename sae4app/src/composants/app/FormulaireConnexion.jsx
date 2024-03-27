@@ -35,7 +35,6 @@ const FormulaireConnexion = () =>{
             <button onClick={handleLogin}>Se connecter</button>
             <div id="lign_or"><span>ou</span></div>
             <button onClick={() => navigate('/usager')} id="acces_u_btn">Acces a l'espace usager</button>
-            { sessionStorage.getItem('role')}
         </div>
 
     )

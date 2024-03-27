@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/personnel",
-        element:sessionStorage.getItem('role')==="personnel"?<PageAcceuilPersonnel/>:<Navigate to="/" />
+        element:<PageAcceuilPersonnel/>
       },
       {
         path: "/personnel/salle",
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/technicien",
-        element:sessionStorage.getItem('role')==="technicien"?<PageAcceuilTechnicien/>:<Navigate to="/" />
+        element:<PageAcceuilTechnicien/>
       },
       {
         path: "/technicien/intervention",
