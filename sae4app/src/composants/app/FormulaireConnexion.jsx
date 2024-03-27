@@ -19,6 +19,7 @@ const FormulaireConnexion = () =>{
     const handleLogin = () => {
         userList.map((user)=>{
             if (user.username === document.getElementById('username').value && user.password === document.getElementById('password').value){
+                sessionStorage.setItem('role',user.role)
                 navigate('/'+user.role)
             }else{
                 setErrLogin(true)
@@ -34,6 +35,7 @@ const FormulaireConnexion = () =>{
             <button onClick={handleLogin}>Se connecter</button>
             <div id="lign_or"><span>ou</span></div>
             <button onClick={() => navigate('/usager')} id="acces_u_btn">Acces a l'espace usager</button>
+            { sessionStorage.getItem('role')}
         </div>
 
     )
