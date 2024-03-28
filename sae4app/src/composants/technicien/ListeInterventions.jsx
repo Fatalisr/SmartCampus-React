@@ -1,20 +1,32 @@
 import PropTypes from "prop-types";
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import Intervention from "./Intervention.jsx";
 import '../../assets/css/index.css'
+import {getInterventions} from "../../utilitaires/services/DatabaseApiService.js";
 
 
 const ListeIntervention = (props) =>{
     const [Interventions,setInterventions] = useState([])
     const [userInputType,setUserInputType] = useState("ALL")
+    useEffect(() => {
+        const fetchInterventions = async() => {
+            return await getInterventions();
+        }
+        const response = fetchInterventions();
+        const responseData = response["hydra:member"]
+        response.then((responseData) => {
+            setInterventions(responseData);
+            console.log(Interventions)
+        });
+    }, []);
     const [userInputAssign,setUserInputAssign] = useState("ALL")
-    const renderInterventions = Interventions.map((intervention) => {
+    {/*const renderInterventions = Interventions.map((intervention) => {
            if(userInputType != "ALL") {
                if(userInputType == intervention.type) {
-                   return <Intervention/>
+                   return <Intervention id={intervention.id} salle={""} typeIntervention={"INSTALLATION"} SAName={""} techName={""}/>
                }
            }
-    })
+    })*/}
     const filterType = (e) => {
         setUserInputType(e.target.value)
     }
@@ -35,8 +47,7 @@ const ListeIntervention = (props) =>{
                 <option value={"ALL"}>Tout</option>
             </select>
             <div>
-                {renderInterventions}
-                <Intervention/>
+                {/*{Interventions.length === 0? <p>Loading...</p>:renderInterventions}*/}
             </div>
         </>
     )

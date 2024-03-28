@@ -1,7 +1,6 @@
 [
   {
-    "dbname": "sae34bdm1eq1",
-    "username": "m1eq1",
-    "userpass": "sodqif-vefXym-0cikho"
+    "accept": "application/ld+json",
+    "baseURl": "http://localhost:8000/api"
   }
 ]
