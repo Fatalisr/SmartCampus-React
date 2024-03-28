@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
+import ListeIntervention from "./ListeInterventions.jsx";
 
 const PageAcceuilTechnicien = (props) =>{
 
     return(
         <>
-            <p>{sessionStorage.getItem('role')}</p>
+            <ListeIntervention exampleProp={"temp"}/>
         </>
     )
 }
