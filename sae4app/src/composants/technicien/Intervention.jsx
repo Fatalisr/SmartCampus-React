@@ -33,7 +33,7 @@ const Intervention = (props) =>{
 Intervention.propTypes = {
     id: PropTypes.number.isRequired,
     SAName: PropTypes.string.isRequired,
-    techName: PropTypes.number.isRequired,
+    techName: PropTypes.string.isRequired,
     typeIntervention: PropTypes.string.isRequired,
     salle: PropTypes.string.isRequired,
 }
