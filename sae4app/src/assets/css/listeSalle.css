@@ -15,18 +15,25 @@
     background-color: red;
     margin: 5px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+
 }
 
 .vert{
     background-color: green;
     margin: 5px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .orange{
     background-color: orange;
     margin: 5px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .search-input
@@ -47,4 +54,11 @@
 
 HTML{
     overflow: hidden;
+}
+
+
+.doorImg
+{
+    height: 30px;
+    width: 30px;
 }
