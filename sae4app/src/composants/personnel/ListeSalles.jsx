@@ -47,13 +47,20 @@ const ListeSalles = () =>{
 
     return(
         <>
-            <h2>Liste des Salles</h2>
-            <div className={"listSalle"}>
-                <input type="text" className="search-input" placeholder="Minimum"   onChange={handleChangeMin}/>
-                <input type="text" className="search-input" placeholder="Maximum"   onChange={handleChangeMax}/>
-                <input type="text" className="search-input" placeholder="Rechercher" onChange={handleChangeName}/>
-                {renderFile}
-            </div>
+            <div className={"PageListeSalle"}>
+                <h2>Liste des Salles</h2>
+
+                <div className={"input"}>
+                    <input type="text" className="search-input" placeholder="Rechercher" onChange={handleChangeName}/>
+                    <input type="text" className="search-input" placeholder="Minimum"   onChange={handleChangeMin}/>
+                    <input type="text" className="search-input" placeholder="Maximum"   onChange={handleChangeMax}/>
+                </div>
+
+                <div className={"listSalle"}>
+                    {renderFile}
+                </div>
+
+        </div>
 
 
         </>

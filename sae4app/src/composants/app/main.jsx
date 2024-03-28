@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom"
-import PageConnexion from "../commun/PageConnexion.jsx";
+import PageConnexion from "./PageConnexion.jsx";
 import PageAcceuilUsager from "../usager/PageAcceuilUsager.jsx";
 import PageAcceuilPersonnel from "../personnel/PageAcceuilPersonnel.jsx";
 import PageAcceuilTechnicien from "../technicien/PageAcceuilTechnicien.jsx";
@@ -19,11 +19,11 @@ const router = createBrowserRouter([
     element: <Menu />,
     children:[
       {
-        path: "/", //Une meme page pour l'affichage du selecteur de salle et du composant AfficherSalle
+        path: "/",
         element: <PageConnexion/>
       },
       {
-        path: "/usager", //Une meme page pour l'affichage du selecteur de salle et du composant AfficherSalle
+        path: "/usager",
         element: <PageAcceuilUsager/>
       },
       {

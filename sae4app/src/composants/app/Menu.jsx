@@ -1,9 +1,17 @@
-import {Outlet} from "react-router-dom";
+
+import image from "../../assets/img/logo_smartcampus.png"
+import {Outlet} from "react-router-dom"
+
 
 const Menu = () =>{
+
     return(
         <>
-            <Outlet />
+            <header>
+                <img src={image} alt='logo site'/>
+                <h2>SMART CAMPUS</h2>
+            </header>
+            <Outlet/>
         </>
     )
 }

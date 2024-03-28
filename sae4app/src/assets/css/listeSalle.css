@@ -3,17 +3,48 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    width: 70%;
+    height: 70vh;
+
+    overflow: scroll;
 }
 .rouge{
     background-color: red;
+    margin: 5px;
+    width: 100%;
 }
 
 .vert{
     background-color: green;
+    margin: 5px;
+    width: 100%;
 }
 
 .orange{
     background-color: orange;
+    margin: 5px;
+    width: 100%;
 }
 
+.search-input
+{
+    width: 25%;
+}
 
+.input{
+    display: flex;
+    justify-content: space-evenly;
+}
+.PageListeSalle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+HTML{
+    overflow: hidden;
+}

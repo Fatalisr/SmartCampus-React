@@ -4,7 +4,9 @@ const PageAcceuilPersonnel = () =>{
         <>
             <ListeSalles />
         </>
+
     )
 }
+
 
 export default PageAcceuilPersonnel
