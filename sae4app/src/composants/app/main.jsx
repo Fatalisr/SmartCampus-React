@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '../../assets/css/index.css'
 import {
-  createBrowserRouter,
+  createBrowserRouter, Navigate,
   RouterProvider,
 } from "react-router-dom"
 import PageConnexion from "./PageConnexion.jsx";
@@ -16,19 +16,19 @@ import Menu from "./Menu.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Menu />,
+    element: <Menu/>,
     children:[
       {
         path: "/",
-        element: <PageConnexion/>
+        element: <PageConnexion exampleProp={"temp"}/>
       },
       {
-        path: "/usager",
-        element: <PageAcceuilUsager/>
+        path: "/usager", //Une meme page pour l'affichage du selecteur de salle et du composant AfficherSalle
+        element: <PageAcceuilUsager exampleProp={"temp"}/>
       },
       {
         path: "/personnel",
-        element: <PageAcceuilPersonnel/>,
+        element: <PageAcceuilPersonnel exampleProp={"temp"}/>,
       },
       {
         path: "/personnel/salle/:idSalle",
@@ -36,11 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/technicien",
-        element: <PageAcceuilTechnicien/>,
+        element: <PageAcceuilTechnicien exampleProp={"temp"}/>,
       },
       {
         path: "/technicien/intervention",
-        element: <PageDetailIntervention/>,
+        element: <PageDetailIntervention exampleProp={"temp"}/>,
       },
     ],
   },
