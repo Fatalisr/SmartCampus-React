@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import '../../assets/css/technicien/technicien.css'
+import '../../assets/css/index.css'
 
 const Intervention = (props) =>{
     if(props.typeIntervention == "A_INSTALLER"){

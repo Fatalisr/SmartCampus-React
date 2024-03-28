@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import {useState} from "react";
 import Intervention from "./Intervention.jsx";
+import '../../assets/css/index.css'
 
 
 const ListeIntervention = (props) =>{
