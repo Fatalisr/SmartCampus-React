@@ -1,0 +1,64 @@
+#displayBtnsDiv{
+    display: flex;
+    margin: 2% 1%;
+}
+#displayBtnsDiv button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+#displayBtnsDiv div{
+    width: 100%;
+    justify-items: center;
+}
+#displayBtnsDiv button img{
+    width: 50px;
+    height: 50px;
+}
+#displayDetailsRoomBtn{
+    width: 40%;
+    margin-left: 60%;
+}
+#displayAlertsRoomBtn{
+    width: 40%;
+    margin-right: 60%;
+}
+#div_display{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+}
+.slide-in-left {
+    width: 80%;
+    height: 400px;
+    background-color: blue;
+    animation: slideInLeft 0.5s forwards;
+}
+
+.slide-in-right {
+    width: 80%;
+    height: 400px;
+    background-color: blue;
+    animation: slideInRight 0.5s forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
