@@ -1,3 +1,4 @@
+
 import image from "../../assets/img/logo_smartcampus.png"
 import {Outlet, useNavigate} from "react-router-dom"
 import React from "react";

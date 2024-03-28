@@ -31,8 +31,8 @@ const router = createBrowserRouter([
         element: <PageAcceuilPersonnel exampleProp={"temp"}/>,
       },
       {
-        path: "/personnel/salle",
-        element: <PageDetailSallePersonnel exampleProp={"temp"}/>,
+        path: "/personnel/salle/:idSalle",
+        element: <PageDetailSallePersonnel/>,
       },
       {
         path: "/technicien",
