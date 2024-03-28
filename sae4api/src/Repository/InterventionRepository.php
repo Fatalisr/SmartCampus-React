@@ -21,6 +21,16 @@ class InterventionRepository extends ServiceEntityRepository
         parent::__construct($registry, Intervention::class);
     }
 
+    public function getCurrentIntervention():array
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.state = :val')
+            ->setParameter('val','EN_COURS')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Intervention[] Returns an array of Intervention objects
 //     */

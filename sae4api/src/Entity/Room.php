@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\RoomRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: RoomRepository::class)]
 #[ApiResource]
@@ -16,6 +17,7 @@ class Room
     private ?int $id = null;
 
     #[ORM\Column(length: 15)]
+    #[Groups(['intervention:item:read'])]
     private ?string $name = null;
 
     #[ORM\Column]

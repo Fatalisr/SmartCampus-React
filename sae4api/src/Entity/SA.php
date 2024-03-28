@@ -7,6 +7,7 @@ use App\Repository\SARepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SARepository::class)]
 #[ApiResource]
@@ -18,15 +19,18 @@ class SA
     private ?int $id = null;
 
     #[ORM\Column(length: 15)]
+    #[Groups(['intervention:read','intervention:item:read'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 20, options: ['check' => "check (state in ('INACTIF','ACTIF','MAINTENANCE','A_INSTALLER'))"])]
     private ?string $state = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[Groups(['intervention:item:read'])]
     private ?Room $currentRoom = null;
 
     #[ORM\ManyToOne]
+    #[Groups(['intervention:item:read'])]
     private ?Room $oldRoom = null;
 
     public function __construct()

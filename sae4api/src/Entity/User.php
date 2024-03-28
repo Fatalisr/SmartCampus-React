@@ -26,18 +26,20 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
     ],
     normalizationContext: ['groups' => 'users:read']
 )]
+
 class User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['intervention:read','intervention:item:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 15)]
-    #[Groups(['users:read'])]
+    #[Groups(['users:read','intervention:read','intervention:item:read'])]
     private ?string $username = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 255)]
     #[Groups(['users:read'])]
     private ?string $password = null;
 
