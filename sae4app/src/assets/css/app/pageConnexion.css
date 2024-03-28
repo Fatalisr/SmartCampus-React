@@ -1,0 +1,55 @@
+#page_connexion{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3%;
+}
+#connexion_form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+#connexion_form input{
+    width: 80%;
+    height: 40px;
+    font-size: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: solid 1px black;
+}
+#connexion_form button{
+    width: 40%;
+    height: 10%;
+    margin: 7%;
+}
+
+
+#err_span{
+    color: red;
+    margin-bottom: 15px;
+}
+
+
+#lign_or{
+    width: 80%;
+    text-align: center;
+    border-top: 2px solid black;
+    margin-top: 5%;
+}
+#lign_or span{
+    background-color: #cfffc1;
+    display: inline-block;
+    padding: 0 10px;
+    position: relative;
+    top: -12px;
+    font-size: large;
+}
+#acces_u_btn{
+    width: 40%;
+}

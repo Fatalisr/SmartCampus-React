@@ -1,13 +1,14 @@
-import PropTypes from "prop-types";
-
-const PageDetailSallePersonnel = (props) =>{
+import { useParams } from 'react-router-dom'
+const PageDetailSallePersonnel = () =>{
+    const { idSalle } = useParams()
     return(
         <>
+            {idSalle}
         </>
     )
 }
 
-PageDetailSallePersonnel.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
+
+
+
 export default PageDetailSallePersonnel

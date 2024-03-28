@@ -1,13 +1,9 @@
-import PropTypes from "prop-types";
 
-const PageConnexion = (props) =>{
+const PageConnexion = () =>{
     return(
         <>
         </>
     )
 }
 
-PageConnexion.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
 export default PageConnexion

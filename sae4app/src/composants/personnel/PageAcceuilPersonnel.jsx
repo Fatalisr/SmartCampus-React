@@ -1,13 +1,15 @@
-import PropTypes from "prop-types";
+import ListeSalles from "./ListeSalles.jsx";
+import {useEffect} from "react";
 
-const PageAcceuilPersonnel = (props) =>{
+
+const PageAcceuilPersonnel = () =>{
     return(
         <>
+            <ListeSalles />
         </>
+
     )
 }
 
-PageAcceuilPersonnel.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
+
 export default PageAcceuilPersonnel
