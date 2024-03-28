@@ -18,7 +18,7 @@ const Menu = () =>{
                 <img src={image} alt='logo site'/>
                 <h2>SMART CAMPUS</h2>
                 {sessionStorage.getItem('role') !== "" ? <button onClick={handleretour} id="acces_u_btn">
-                    {sessionStorage.getItem('role') === "usager" ? <p>Retour</p> : <p>Deconnection</p>}
+                    {sessionStorage.getItem('role') === "usager" ? <p>Retour</p> : <p>Déconnexion</p>}
                 </button> : <></>}
             </header>
             <Outlet/>
