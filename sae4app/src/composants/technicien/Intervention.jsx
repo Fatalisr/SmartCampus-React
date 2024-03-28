@@ -9,7 +9,7 @@ const Intervention = (props) =>{
                     <p>{props.SAName}</p>
                     <p>Maintenance</p>
                     <p>{props.salle}</p>
-                    {props.techID != undefined?<p>∅</p>: <p>{props.techID}</p>}
+                    {props.techName != undefined?<p>∅</p>: <p>{props.techName}</p>}
                 </div>
             </>
         )
@@ -21,7 +21,7 @@ const Intervention = (props) =>{
                     <p>{props.SAName}</p>
                     <p>Installation</p>
                     <p>{props.salle}</p>
-                    {props.techID != undefined?<p>∅</p>: <p>{props.techID}</p>}
+                    {props.techName != undefined?<p>∅</p>: <p>{props.techName}</p>}
                 </div>
             </>
         )
@@ -32,7 +32,7 @@ const Intervention = (props) =>{
 Intervention.propTypes = {
     id: PropTypes.number.isRequired,
     SAName: PropTypes.string.isRequired,
-    techID: PropTypes.number.isRequired,
+    techName: PropTypes.number.isRequired,
     typeIntervention: PropTypes.string.isRequired,
     salle: PropTypes.string.isRequired,
 }
