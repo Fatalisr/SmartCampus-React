@@ -25,9 +25,9 @@ const ListeIntervention = (props) =>{
     const renderInterventions = Interventions.map((intervention) => {
         const data = Object.values(intervention)
         const id = (parseInt(data[0].slice(-1)))
-        const salle = ""
         const typeInterv = data[3]
         const saName = Object.values(data[5])[2]
+        const salle = Object.values(data[5])[3]["name"]
         let techName = ""
         if(data.length === 7) {
             techName = Object.values(data[6])[3]
@@ -35,12 +35,27 @@ const ListeIntervention = (props) =>{
             techName = "Aucun"
 
         }
-        if(userInputType !== "ALL") {
-           if(userInputType === typeInterv) {
+        if(userInputType !== "ALL" && userInputAssign !== "ALL") {
+           if(userInputType === typeInterv && userInputAssign === "TRUE" && techName !== "Aucun" ) {
                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
            }
-       } else {
+            if(userInputType === typeInterv && userInputAssign === "FALSE" && techName === "Aucun" ) {
+                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+            }
+       } else if(userInputType === "ALL" && userInputAssign !== "ALL") {
+            if(userInputAssign === "TRUE" && techName !== "Aucun" ) {
+                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+            }
+            if(userInputAssign === "FALSE" && techName === "Aucun" ) {
+                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+            }
+        }else if(userInputType !== "ALL" && userInputAssign === "ALL") {
+            if(userInputType === typeInterv) {
+                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+            }
+        }else {
             return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+
         }
     })
     const filterType = (e) => {
