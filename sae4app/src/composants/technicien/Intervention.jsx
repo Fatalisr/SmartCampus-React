@@ -3,12 +3,12 @@ import './../../assets/css/technicien/technicien.css'
 import './../../assets/css/index.css';
 
 const Intervention = (props) =>{
-    if(props.typeIntervention == "A_INSTALLER"){
+    if(props.typeIntervention == "INSTALLATION"){
         return(
             <>
-                <div className={"flRow maint"}>
+                <div className={"flRow install"}>
                     <p>{props.SAName}</p>
-                    <p>Maintenance</p>
+                    <p>Installation</p>
                     <p>{props.salle}</p>
                     {props.techName != undefined?<p>∅</p>: <p>{props.techName}</p>}
                 </div>
@@ -20,7 +20,7 @@ const Intervention = (props) =>{
             <>
                 <div className={"flRow maint"}>
                     <p>{props.SAName}</p>
-                    <p>Installation</p>
+                    <p>Maintenance</p>
                     <p>{props.salle}</p>
                     {props.techName != undefined?<p>∅</p>: <p>{props.techName}</p>}
                 </div>

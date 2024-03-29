@@ -10,7 +10,6 @@ const baseUrlApiBD = "http://localhost:8000/api";
 export const getInterventions = async() =>{
 
     try{
-        console.log(baseUrlApiBD);
         const response = await fetch(`${baseUrlApiBD}/interventions`,{
             headers: {
                 accept : "application/ld+json",
