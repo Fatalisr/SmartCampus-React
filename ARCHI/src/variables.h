@@ -18,6 +18,7 @@
 #include "Wifi/wifi.h"
 #include "LED/led.h"
 #include "Ecran/ecran.h"
+#include "Date/date.h"
 
 
 
@@ -71,6 +72,12 @@ extern int compteurTemp;
 extern u16 ppmEnvoye;
 extern float temperatureEnvoye;
 extern float humidityEnvoye;
+
+/*-----------------------------------------------------------------*/
+/*                                   date                          */
+/*-----------------------------------------------------------------*/
+
+extern char * date;
 
 /*-----------------------------------------------------------------*/
 /*                        Capteur de CO2                           */

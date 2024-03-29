@@ -71,6 +71,6 @@ void getCO2Task(void *parameter){
           sommeCo2 = 0;
           compteurCo2 = 0;
         }
-        vTaskDelay( pdMS_TO_TICKS( 6000 ) );
+        vTaskDelay( pdMS_TO_TICKS( 60000 ) );
     }
 }

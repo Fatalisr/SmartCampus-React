@@ -14,7 +14,6 @@
 /*                           Fonctions                             */
 /*-----------------------------------------------------------------*/
 
-void sendToApi();
 
 
 void sendToApiTemp();
@@ -33,10 +32,7 @@ String convertTOJson(t value, String type);
  */
 void initClock();
 
-/*
-* @brief get a char * reprsenting the date
-*/
-char * getDate();
+
 
 /*-----------------------------------------------------------------*/
 /*                             Tasks                               */

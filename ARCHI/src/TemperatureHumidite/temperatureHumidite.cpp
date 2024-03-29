@@ -82,6 +82,6 @@ void getHumTempTask(void *parameter){
           sommeTemp = 0;
           compteurTemp = 0;
         }
-        vTaskDelay(pdMS_TO_TICKS( 6000 )); 
+        vTaskDelay(pdMS_TO_TICKS( 60000 )); 
     }
 }
