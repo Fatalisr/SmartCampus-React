@@ -6,7 +6,6 @@ export const getMeteoData = () => {
 
     const getdata = async() => {
         try {
-            console.log(baseUrlMeteoApi);
             const response = await fetch(baseUrlMeteoApi, {
                 headers: {
                     accept: "application/ld+json",

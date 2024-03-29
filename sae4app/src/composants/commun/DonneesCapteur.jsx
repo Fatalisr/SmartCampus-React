@@ -1,33 +1,38 @@
 import PropTypes from "prop-types";
 import {getLastCaptures} from "../../utilitaires/services/DataCapturesService.js";
 import { useEffect, useState } from "react";
-
+import "../../assets/css/commun/afficherSalle.css";
 const DonneesCapteur = (props) =>{
     const [datas, setData] = useState([]);
 
     useEffect(() => {
-        const fetchCaptures = async() => {
-            return await getLastCaptures(3);
+        const fetchtemp= async() => {
+            return await getLastCaptures(1, "temp");
         }
-        const response = fetchCaptures();
-        const responseData = response["hydra:member"]
-        response.then((responseData) => {
-            setData(responseData);
+        const fetchhumid = async() => {
+            return await getLastCaptures(1, "hum");
+        }
+        const fetchCO2 = async() => {
+            return await getLastCaptures(1, "co2");
+        }
+        Promise.all([fetchtemp(), fetchhumid(), fetchCO2()]).then((values) => {
+            setData(values);
         });
     }, []);
 
     const renderData = datas.map((data) => {
-        if(data.localisation === props.name) {
-            return <li key={data.id}>{data.nom} - {data.valeur}</li>;
+        console.log(data)
+        if(data[0].localisation === props.name) {
+            return <div key={data[0].id} className="DonnesCapteurline">{data[0].nom} - {data[0].valeur}</div>;
         }
     })
 
     return(
         <>
             <h1> Données {props.name}</h1>
-            <ul>
+            <div id="DonneesCapteurdiv">
                 {renderData}
-            </ul>
+            </div>
         </>
     )
 }
