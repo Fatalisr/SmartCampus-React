@@ -1,15 +1,19 @@
 import PropTypes from "prop-types";
+import DonneesCapteur from "./DonneesCapteur.jsx";
+import DonneesMeteo from "./DonneesMeteo.jsx";
+import ListeConseils from "./ListeConseils.jsx";
 
 const AfficherSalle = (props) =>{
 
     return(
         <>
-            salle {props.id}
+            <DonneesMeteo/>
+            <DonneesCapteur name={props.name}/>
+            <ListeConseils exampleProp={"temp"}/>
         </>
     )
 }
-
 AfficherSalle.propTypes = {
-    id: PropTypes.number,
+    name: PropTypes.string.isRequired,
 }
 export default AfficherSalle

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import {rooms$} from "../../utilitaires/Roomdata.js";
+import {salles$} from "../../utilitaires/data_salles.js";
 import {useState} from "react";
 import {useEffect} from "react";
 
@@ -7,14 +7,14 @@ const SelecteurSalle = (props) =>{
     const [salles, setsalles] = useState([])
 
     useEffect(() => {
-        rooms$.then((salle) => {
+        salles$.then((salle) => {
             setsalles(salle);
         });
 
     }, []); // Liste des "dépendances" du useEffect
 
     const renderRoom = salles.map((salle) => {
-        return <option key={salle.id} value={salle.id}>{salle.room}</option>
+        return <option key={salle.id} value={salle.nom}>{salle.nom}</option>
     })
 
     return(
@@ -22,7 +22,7 @@ const SelecteurSalle = (props) =>{
             <div>
                 <label>Selecteur :</label>
                 <select onChange={props.handleChange}>
-                    <option value={0}>-- Select one --</option>
+                    <option value={"0"}>-- Select one --</option>
                     {renderRoom}
                 </select>
             </div>
