@@ -1,5 +1,3 @@
-import data from "./config-api.json"
-
 const baseUrlApiBD = "http://localhost:8000/api";
 
 

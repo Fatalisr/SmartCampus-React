@@ -84,4 +84,4 @@ const salles = [
 
 
 
-export const salles$ = new Promise((resolve, reject) => setTimeout(resolve, 500, salles));
+export const salles$ = new Promise((resolve) => setTimeout(resolve, 500, salles));

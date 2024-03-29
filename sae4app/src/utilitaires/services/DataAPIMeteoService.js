@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 const baseUrlMeteoApi = "https://api.open-meteo.com/v1/forecast?latitude=46.1631&longitude=-1.1522&current=temperature_2m,relative_humidity_2m,precipitation,rain,weather_code,wind_speed_10m&timezone=Europe%2FBerlin";
 export const getMeteoData = () => {

@@ -27,7 +27,7 @@ export const getCaptures = async(dataType="", nomsa="") =>{
     {
         queries += `?nom=${dataType}`;
     }
-    else if(dataType !== "")
+    else if(nomsa !== "")
     {
         queries += `?nomsa=${nomsa}`;
     }

@@ -9,7 +9,6 @@ linter-job:
   tags: 
     - docker
   script:
-    - "cd sae4app"
     - "yarn lint"
 sonarqube-check:
   stage: sonar
