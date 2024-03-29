@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 const AfficherSalle = (props) =>{
+
     return(
         <>
             données de la salle {props.idSalle}

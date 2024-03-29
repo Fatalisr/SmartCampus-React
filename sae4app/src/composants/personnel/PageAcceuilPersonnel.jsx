@@ -1,11 +1,10 @@
-
+import ListeSalles from "./ListeSalles.jsx";
 
 
 const PageAcceuilPersonnel = () =>{
-
     return(
         <>
-            <a href="/personnel/salle/1">SALLE</a>
+            <ListeSalles />
         </>
     )
 }
