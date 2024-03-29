@@ -1,13 +1,12 @@
 import {Navigate} from "react-router-dom";
-import React from "react";
+import ListeSalles from "./ListeSalles.jsx";
 
 
 const PageAcceuilPersonnel = () =>{
-
     return(
-        sessionStorage.getItem('role')==="personnel"?<>
-        <
-        />:<Navigate to="/" />
+        sessionStorage.getItem('role')==="PERSONNEL"?
+            <ListeSalles />:
+            <Navigate to="/" />
     )
 }
 

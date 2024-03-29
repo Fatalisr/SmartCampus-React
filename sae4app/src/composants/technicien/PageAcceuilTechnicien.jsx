@@ -1,16 +1,11 @@
-import PropTypes from "prop-types";
 import {Navigate} from "react-router-dom";
-import React from "react";
+import ListeIntervention from "./ListeInterventions.jsx";
 
-const PageAcceuilTechnicien = (props) =>{
+
+const PageAcceuilTechnicien = () =>{
     return(
-        sessionStorage.getItem('role')==="technicien"?<>
-        <
-        />:<Navigate to="/" />
+        sessionStorage.getItem('role')==="TECHNICIEN"?<ListeIntervention exampleProp={"temp"}/>:<Navigate to="/" />
     )
 }
 
-PageAcceuilTechnicien.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
 export default PageAcceuilTechnicien

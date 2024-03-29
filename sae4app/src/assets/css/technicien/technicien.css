@@ -1,0 +1,11 @@
+.flRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.maint {
+    background-color: firebrick;
+}
+.install {
+    background-color: orangered;
+}

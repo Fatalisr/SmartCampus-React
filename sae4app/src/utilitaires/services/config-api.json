@@ -1,0 +1,6 @@
+[
+  {
+    "accept": "application/ld+json",
+    "baseURl": "http://localhost:8000/api"
+  }
+]

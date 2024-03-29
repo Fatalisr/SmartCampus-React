@@ -1,40 +1,58 @@
-
-import React,{useState, useEffect} from "react";
-import {users$} from "../../utilitaires/users_data.js";
-import {useNavigate} from 'react-router-dom';
-
-
+import {useState} from "react"
+import {useNavigate} from 'react-router-dom'
+import {login} from "../../utilitaires/services/loginService.js"
+import eyeOpen from '../../assets/img/eyeOpen.png'
+import eyeClose from '../../assets/img/eyeClose.png'
 
 const FormulaireConnexion = () =>{
-    const [userList, setUserList] = useState([])
-    const [errLogin,setErrLogin] = useState(false)
+
+    const [errLogin,setErrLogin] = useState()
     const navigate = useNavigate()
+    const [viewPasswordInput, setVPI] = useState('password')
 
-    useEffect(() => {
-        users$.then((user)=>{
-            setUserList(user)
-        })
-    }, []);
+    const handleLogin =  () => {
+        const result =  login(document.getElementById('username').value,document.getElementById('password').value)
 
-    const handleLogin = () => {
-        userList.map((user)=>{
-            if (user.username === document.getElementById('username').value && user.password === document.getElementById('password').value){
-                sessionStorage.setItem('role',user.role)
-                navigate('/'+user.role)
+        result.then((res)=>{
+            if(res){
+                switch (sessionStorage.getItem('role')) {
+                    case 'TECHNICIEN': navigate('/technicien')
+                        break
+                    case 'PERSONNEL': navigate('/personnel')
+                        break
+                    default: navigate('/')
+                }
             }else{
                 setErrLogin(true)
             }
         })
+
     };
+
+    const handleuser = () => {
+        sessionStorage.setItem("role", "usager")
+        navigate('/usager')
+    }
+    const changeViewPassword = () => {
+        if(viewPasswordInput === 'password'){
+            setVPI('')
+        }else{
+            setVPI('password')
+        }
+    }
 
     return(
         <div id="connexion_form">
             <input id="username" placeholder='Saisisez votre identifiant'/>
-            <input id="password" type='password' placeholder='Saisisez votre mot de passe'/>
-            {errLogin ? <span id="err_span">identifiant ou mot de passe incorrect</span> : <span></span>}
+            <div id="mdp_form">
+                <input id="password" type={viewPasswordInput} placeholder='Saisisez votre mot de passe'/>
+                <img alt="" id="viewMdpImage" onClick={() => changeViewPassword()}
+                     src={viewPasswordInput === 'password' ? eyeOpen : eyeClose}/>
+                {errLogin ? <span id="err_span">identifiant ou mot de passe incorrect</span> : <span></span>}
+            </div>
             <button onClick={handleLogin}>Se connecter</button>
             <div id="lign_or"><span>ou</span></div>
-            <button onClick={() => navigate('/usager')} id="acces_u_btn">Acces a l'espace usager</button>
+            <button onClick={handleuser} id="acces_u_btn">Acces a l'espace usager</button>
         </div>
 
     )
