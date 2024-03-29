@@ -2,10 +2,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin: 5px;
 }
 .maint {
     background-color: firebrick;
+    border-radius : 5px;
 }
 .install {
     background-color: orangered;
+    border-radius : 5px;
 }
