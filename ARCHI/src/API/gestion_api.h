@@ -16,6 +16,11 @@
 
 void sendToApi();
 
+
+void sendToApiTemp();
+void sendToApiCo2();
+void sendToApiHum();
+
 /*
 * @brief create the json object
 */

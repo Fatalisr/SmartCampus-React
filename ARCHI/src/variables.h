@@ -42,6 +42,37 @@ extern bool ledHumiOk;
 extern bool ledCO2Ok;
 
 /*-----------------------------------------------------------------*/
+/*            Ecart par rapport au dernier envoie                  */
+/*-----------------------------------------------------------------*/
+
+extern int ecartCo2;
+extern int ecartHum;
+extern float ecartTemp;
+
+
+/*-----------------------------------------------------------------*/
+/*               Moyenne glissante des donnée                      */
+/*-----------------------------------------------------------------*/
+
+
+extern float sommeCo2;
+extern float sommeHum;
+extern float sommeTemp;
+
+
+extern int compteurCo2;
+extern int compteurHum;
+extern int compteurTemp;
+
+/*-----------------------------------------------------------------*/
+/*               Dernière donnée envoyé à l'API                    */
+/*-----------------------------------------------------------------*/
+
+extern u16 ppmEnvoye;
+extern float temperatureEnvoye;
+extern float humidityEnvoye;
+
+/*-----------------------------------------------------------------*/
 /*                        Capteur de CO2                           */
 /*-----------------------------------------------------------------*/
 
