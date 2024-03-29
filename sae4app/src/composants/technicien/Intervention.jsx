@@ -10,7 +10,7 @@ const Intervention = (props) =>{
                     <p>{props.SAName}</p>
                     <p>Installation</p>
                     <p>{props.salle}</p>
-                    {props.techName != undefined?<p>∅</p>: <p>{props.techName}</p>}
+                    <p>{props.techName}</p>
                 </div>
             </>
         )
@@ -22,7 +22,7 @@ const Intervention = (props) =>{
                     <p>{props.SAName}</p>
                     <p>Maintenance</p>
                     <p>{props.salle}</p>
-                    {props.techName != undefined?<p>∅</p>: <p>{props.techName}</p>}
+                    <p>{props.techName}</p>
                 </div>
             </>
         )
