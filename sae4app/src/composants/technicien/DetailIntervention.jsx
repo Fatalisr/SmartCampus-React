@@ -18,6 +18,11 @@ const DetailIntervention = (props) =>{
     }, []);
 
 
+    const patchInter = (id, idTech) => {
+        patchInterventionID(id, idTech).then(r => window.location= '/technicien/intervention/' + id)
+
+    }
+
 
     const renderIntervention = () => {
         const data = Object.values(Intervention)
@@ -43,16 +48,15 @@ const DetailIntervention = (props) =>{
         }
 
         const renderAssign = () => {
-            if(sessionStorage.getItem('username')===techName)
+            if(sessionStorage.getItem('id_user')==idtech.toString())
             {
                 return(
-                    <div>
-                        <button onClick={patchInterventionID(null)}>Me désassigner</button>
-                    </div>)
+                        <button onClick={() => {patchInter(id, null)}}>Me désassigner</button>
+                    )
             }
-            else if(techName==="Aucun"){
+            else if(idtech===-1){
                 return(
-                    <button onClick={() => {patchInterventionID(15)}}>M'assigner</button>)
+                    <button onClick={() => {patchInter(id, sessionStorage.getItem('id_user'))}}>M'assigner</button>)
             }
         }
 
@@ -60,7 +64,7 @@ const DetailIntervention = (props) =>{
         const renderValid = () => {
 
 
-            if(sessionStorage.getItem('username')===techName)
+            if(sessionStorage.getItem('id_user')===techName)
             {
                 return(
                     <div>
@@ -97,6 +101,6 @@ const DetailIntervention = (props) =>{
 }
 
 DetailIntervention.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
 }
 export default DetailIntervention

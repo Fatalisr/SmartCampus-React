@@ -32,7 +32,7 @@ export const login = async (username, password) => {
         ){
             returnValue = true
             sessionStorage.setItem("role",Object.values(users)[i]['role'])
-            sessionStorage.setItem("username",Object.values(users)[i]['username'])
+            sessionStorage.setItem("id_user",Object.values(users)[i]['id'])
             break
         }
     }

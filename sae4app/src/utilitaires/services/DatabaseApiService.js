@@ -1,7 +1,4 @@
-import data from "./config-api.json"
-
-const baseUrlApiBD = "http://localhost:8000/api";
-
+import {baseUrlApiBD} from "./config-api.js";
 
 /*
  * getInterventions : asynchronous function that returns a promise containing json data
@@ -40,22 +37,24 @@ export const getInterventionID = async(id) =>{
         return await jsonData;
     }
     catch (error){
-        throw `Error in getCaptures request : ${error.name}, ${error.message}` ;
+        throw `Error in getInterventionID request : ${error.name}, ${error.message}` ;
     }
 }
 
 
 export const patchInterventionID = async(id, idnewtech) =>{
 
+    if(idnewtech != null)
+        idnewtech = "https://localhost:8000/api/users/" + idnewtech
     try{
         const response = await fetch(`${baseUrlApiBD}/intervention/setTechnician/${id}`,{
             method: "PATCH",
             headers: {
-                accept : "application/json",
-
+                accept: "application/json",
+                "Content-Type": "application/merge-patch+json"
             },
             body: JSON.stringify({
-                "tech": "https://localhost:8000/api/users/" + idnewtech
+                "tech": idnewtech
             })
         });
 
