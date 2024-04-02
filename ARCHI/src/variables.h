@@ -20,18 +20,16 @@
 #include "Ecran/ecran.h"
 
 
-
-
-
-
 /*-----------------------------------------------------------------*/
 /*                              WIFI                               */
 /*-----------------------------------------------------------------*/
 
-#define EAP_IDENTITY "ugay" //Login
-#define EAP_USERNAME "ugay" //Login
-#define EAP_PASSWORD "LaceulalTelephone7!" //Eduroam password
-extern const char* ssid; 
+extern String EAP_IDENTITY; //Login
+extern String EAP_USERNAME; //Login
+extern String EAP_PASSWORD; //Eduroam password
+extern String ssid; 
+
+void setWifi(String ssid, String login, String password);
 
 /*-----------------------------------------------------------------*/
 /*                              LED                                */
@@ -47,6 +45,9 @@ extern bool ledCO2Ok;
 
 extern u16 ppm;
 extern s16 err_CO2;
+extern bool sendCO2;
+ 
+void setSendCO2(bool value);
 
 /*-----------------------------------------------------------------*/
 /*               Capteur de temperature/humidité                   */
@@ -56,12 +57,21 @@ extern float temperature;
 extern float humidity;
 #define DHTPIN 7// Pin du capteur de temperature/humidité
 
+extern bool sendTemperature;
+extern bool sendHumidity;
+
+void setSendTemperature(bool value);
+void setSendHumidity(bool value);
+
 /*-----------------------------------------------------------------*/
 /*                              API                                */
 /*-----------------------------------------------------------------*/
 
 extern int APIDelay;
 extern String ESPCurrentRoom;
+
+void setAPIDelay(int returnFrequence);
+void setESPCurrentRoom(String currentRoom);
 
 /*-----------------------------------------------------------------*/
 /*                              TASK                               */

@@ -1,98 +1,23 @@
-// TEST SAVE MEMORY
-#include <FS.h>
-#include <SPIFFS.h>
-String dir = "/config-wifi";
-String file = "/data.txt";
-void listDir(fs::FS &fs, const char * dirname, uint8_t levels){
-    Serial.printf("Listing directory: %s\r\n", dirname);
-    File root = fs.open(dirname);
-    if(!root){
-        Serial.println("- failed to open directory");
-        return;
-    }
-    if(!root.isDirectory()){
-        Serial.println(" - not a directory");
-        return;
-
-    }
-    File file = root.openNextFile();
-    while(file){
-        if(file.isDirectory()){
-            Serial.print("  DIR : ");
-            Serial.println(file.name());
-            if(levels){
-                listDir(fs, file.path(), levels -1);
-            }
-        } else {
-            Serial.print("  FILE: ");
-            Serial.print(file.name());
-            Serial.print("\tSIZE: ");
-            Serial.println(file.size());
-        }
-        file = root.openNextFile();
-    }
-}
-bool createDirFile(String dir, String filename) {
-	// Create a directory
-	if (SPIFFS.mkdir(dir)) {
-		Serial.println("Directory created successfully");
-	} else {
-		Serial.println("Error creating directory");
-		return false;
-	}
-	// Create a file in the directory
-	File file = SPIFFS.open(dir+filename, "w",true);
-	if (!file) {
-		Serial.println("Error creating file");
-		return false;
-	}
-	return true;
-}
-bool writeInConf(String key, String value, String path) {
-	File file = SPIFFS.open(path, "a");
-  	if (!file) {
-    	Serial.println("Error opening file");
-    return false;
-  }
-
- // Write to the end of the file
-  file.println(key+":"+value);
-  file.close();
-  return true;
-}
-bool readFile(String path) {
-	//Read the file
-	File file = SPIFFS.open(path, "r");
-  	if (!file) {
-   		 Serial.println("Error opening file");
-    	return false;
+#include <Preferences.h>
+Preferences preferences;
+void setupPref(String ssid, String user, String password) {
+	String ssidSave = preferences.getString("ssid", "");
+	String userSave = preferences.getString("user", "");
+  	String passwordSave = preferences.getString("password", "");
+	if (ssidSave == "" || passwordSave == "" || passwordSave == ""){
+		Serial.println("No values saved for ssid or password");
+		preferences.begin("credentials", false);
+		preferences.putString("ssid","def");
+		preferences.putString("user","def");
+		preferences.putString("password","def");
+		preferences.end();
   	}
 
- 	// Print the contents of the file
- 	while (file.available()) {
-    	Serial.write(file.read());
-  	}
-  	file.close();
-	return true;
 }
-//
-
-dans setup
-/*
-	if (!SPIFFS.begin(true)) {
-    	Serial.println("Error mounting SPIFFS");
-    	return;
- 	}
-	createDirFile(dir,file);
-	Serial.println("Lecture de "+dir+file);
-	readFile(dir+file);
-*/
-
-dans loop
-/*
-
-	listDir(SPIFFS, "/", 0);
-	readFile(dir+file);
-	Serial.println("<-------------->");
-
-*/
+void writerPref(String key, String value) {
+	preferences.begin("credentials", false);
+	const char* k = key.c_str();
+	const char* v = value.c_str();
+	preferences.putString(k,v);
+	preferences.end();
+}
