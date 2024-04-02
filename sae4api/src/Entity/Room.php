@@ -8,12 +8,14 @@ use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Get;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Controller\GetOnlyRoomsWithSAController;
 
 #[ORM\Entity(repositoryClass: RoomRepository::class)]
 #[ApiResource(
     operations: [
         new GetCollection(
-            description: "Retourne toute les salles",
+            controller: GetOnlyRoomsWithSAController::class,
+            description: "Retourne toute les salles ayant un SA",
             normalizationContext: ['groups' =>['room:read']],
         ),
         new Get(

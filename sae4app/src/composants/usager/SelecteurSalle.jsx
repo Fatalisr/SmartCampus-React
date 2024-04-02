@@ -1,20 +1,20 @@
 import PropTypes from "prop-types";
-import {salles$} from "../../utilitaires/data_salles.js";
 import {useState} from "react";
 import {useEffect} from "react";
+import {getRooms} from "../../utilitaires/services/DatabaseApiService.js";
 
 const SelecteurSalle = (props) =>{
     const [salles, setsalles] = useState([])
 
     useEffect(() => {
-        salles$.then((salle) => {
+        getRooms().then((salle) => {
             setsalles(salle);
         });
 
     }, []); // Liste des "dépendances" du useEffect
 
     const renderRoom = salles.map((salle) => {
-        return <option key={salle.id} value={salle.nom}>{salle.nom}</option>
+        return <option key={salle.id} value={salle.name}>{salle.name}</option>
     })
 
     return(
