@@ -1,0 +1,22 @@
+.detailInter
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.infoSA
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.message
+{
+
+    margin: 10px;
+}
+

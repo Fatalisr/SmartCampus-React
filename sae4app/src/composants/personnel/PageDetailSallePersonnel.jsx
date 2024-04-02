@@ -1,13 +1,12 @@
-import { useParams } from 'react-router-dom'
+import {Navigate} from "react-router-dom";
+
+
 const PageDetailSallePersonnel = () =>{
-    const { idSalle } = useParams()
     return(
-        <>
-            {idSalle}
-        </>
+        sessionStorage.getItem('role')==="PERSONNEL"?<>
+        </>:<Navigate to="/" />
     )
 }
-
 
 
 

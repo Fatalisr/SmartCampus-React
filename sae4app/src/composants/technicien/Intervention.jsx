@@ -6,25 +6,25 @@ const Intervention = (props) =>{
     if(props.typeIntervention == "INSTALLATION"){
         return(
             <>
-                <div className={"flRow install"}>
-                    <p>{props.SAName}</p>
-                    <p>Installation</p>
-                    <p>{props.salle}</p>
-                    <p>{props.techName}</p>
-                </div>
+                    <div className={"flRow install"} onClick={() => {props.redirection(props.id)}}>
+                            <p>{props.SAName}</p>
+                            <p>Installation</p>
+                            <p>{props.salle}</p>
+                            <p>{props.techName}</p>
+                    </div>
             </>
         )
     }
     if(props.typeIntervention == "MAINTENANCE"){
         return(
             <>
-                <div className={"flRow maint"}>
-                    <p>{props.SAName}</p>
-                    <p>Maintenance</p>
-                    <p>{props.salle}</p>
-                    <p>{props.techName}</p>
+                <div className={"flRow maint"} onClick={() => {props.redirection(props.id)}}>
+                        <p>{props.SAName}</p>
+                        <p>Maintenance</p>
+                        <p>{props.salle}</p>
+                        <p>{props.techName}</p>
                 </div>
-            </>
+                </>
         )
     }
 
@@ -36,5 +36,6 @@ Intervention.propTypes = {
     techName: PropTypes.string.isRequired,
     typeIntervention: PropTypes.string.isRequired,
     salle: PropTypes.string.isRequired,
+    redirection: PropTypes.func.isRequired
 }
 export default Intervention
