@@ -58,8 +58,19 @@ s16 getCO2Value(u16 &ppm)
 
 // Tache de lecture du CO2
 void getCO2Task(void *parameter){
+  err_CO2 = getCO2Value(ppm); 
+  vTaskDelay(pdMS_TO_TICKS( 15000 )); 
     for(;;){
-        err_CO2 = getCO2Value(ppm);
-        vTaskDelay( pdMS_TO_TICKS( 2000 ) );
+        err_CO2 = getCO2Value(ppm); 
+        sommeCo2 += ppm;
+        compteurCo2 += 1;
+        if(ppm < ppmEnvoye - ecartCo2 or ppm > ppmEnvoye + ecartCo2)
+        {
+          ppmEnvoye = ppm;
+          sendToApiCo2();
+          sommeCo2 = 0;
+          compteurCo2 = 0;
+        }
+        vTaskDelay( pdMS_TO_TICKS( 60000 ) );
     }
 }

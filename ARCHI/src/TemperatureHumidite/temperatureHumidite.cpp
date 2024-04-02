@@ -57,8 +57,31 @@ void getHumTempvalue(float & hum, float & temp){
 
 // Capture les valeurs et incremente les variables globales correspondante
 void getHumTempTask(void *parameter){
+    getHumTempvalue(humidity,temperature);
+    vTaskDelay(pdMS_TO_TICKS( 20000 )); 
     for(;;){
         getHumTempvalue(humidity,temperature);
-        vTaskDelay(pdMS_TO_TICKS( 10000 )); 
+
+        sommeHum += humidity;
+        sommeTemp += temperature;
+
+        compteurHum += 1;
+        compteurTemp += 1;
+
+        if(humidity < humidityEnvoye - ecartHum or humidity > humidityEnvoye + ecartHum)
+        {
+          humidityEnvoye = humidity;
+          sendToApiHum();
+          sommeHum = 0;
+          compteurHum = 0;
+        }
+        if(temperature < temperatureEnvoye - ecartTemp or temperature > temperatureEnvoye + ecartTemp)
+        {
+          temperatureEnvoye = temperature;
+          sendToApiTemp();
+          sommeTemp = 0;
+          compteurTemp = 0;
+        }
+        vTaskDelay(pdMS_TO_TICKS( 60000 )); 
     }
 }
