@@ -48,8 +48,8 @@ const FormulaireConnexion = () =>{
                 <input id="password" type={viewPasswordInput} placeholder='Saisisez votre mot de passe'/>
                 <img alt="" id="viewMdpImage" onClick={() => changeViewPassword()}
                      src={viewPasswordInput === 'password' ? eyeOpen : eyeClose}/>
-                {errLogin ? <span id="err_span">identifiant ou mot de passe incorrect</span> : <span></span>}
             </div>
+            {errLogin ? <span id="err_span">identifiant ou mot de passe incorrect</span> : <span></span>}
             <button onClick={handleLogin}>Se connecter</button>
             <div id="lign_or"><span>ou</span></div>
             <button onClick={handleuser} id="acces_u_btn">Acces a l'espace usager</button>

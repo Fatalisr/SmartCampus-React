@@ -40,3 +40,20 @@ export const getInterventionID = async(id) =>{
         throw `Error in getInterventionID request : ${error.name}, ${error.message}` ;
     }
 }
+
+/*
+ * getUser : retourne la liste des users existant
+ */
+export const getUsers = async () =>{
+    try{
+        const response   = await fetch(`${baseUrlApiBD}/users`,{
+            headers: {
+                accept : "application/json",
+            }
+        });
+        return response.json()
+    }
+    catch (error){
+        throw `Error in getUsers request : ${error.name}, ${error.message}` ;
+    }
+}
