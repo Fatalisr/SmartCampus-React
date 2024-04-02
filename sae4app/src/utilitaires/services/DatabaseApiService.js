@@ -40,3 +40,52 @@ export const getInterventionID = async(id) =>{
         throw `Error in getInterventionID request : ${error.name}, ${error.message}` ;
     }
 }
+
+
+export const patchInterventionID = async(id, idnewtech) =>{
+
+    if(idnewtech != null)
+        idnewtech = "https://localhost:8000/api/users/" + idnewtech
+    try{
+        const response = await fetch(`${baseUrlApiBD}/intervention/setTechnician/${id}`,{
+            method: "PATCH",
+            headers: {
+                accept: "application/json",
+                "Content-Type": "application/merge-patch+json"
+            },
+            body: JSON.stringify({
+                "tech": idnewtech
+            })
+        });
+
+        const jsonData = response.json();
+        return await jsonData;
+    }
+    catch (error){
+        throw `Error in patchCaptures request : ${error.name}, ${error.message}` ;
+    }
+}
+
+export const patchEndInterventionID = async(id, report) =>{
+
+
+    try{
+        const response = await fetch(`${baseUrlApiBD}/intervention/setEndIntervention/${id}`,{
+            method: "PATCH",
+            headers: {
+                accept: "application/json",
+                "Content-Type": "application/merge-patch+json"
+            },
+            body: JSON.stringify({
+                "report": report,
+                "state": "FINIE"
+            })
+        });
+
+        const jsonData = response.json();
+        return await jsonData;
+    }
+    catch (error){
+        throw `Error in patchCaptures request : ${error.name}, ${error.message}` ;
+    }
+}

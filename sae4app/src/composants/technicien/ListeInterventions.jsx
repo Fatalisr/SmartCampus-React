@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import {useState,useEffect} from "react";
 import Intervention from "./Intervention.jsx";
 import '../../assets/css/index.css'
@@ -22,6 +21,11 @@ const ListeIntervention = (props) =>{
     }, []);
 
 
+    const toDetailInter = (id) => {
+        window.location= '/technicien/intervention/' + id
+    };
+
+
     const renderInterventions = Interventions.map((intervention) => {
         const data = Object.values(intervention)
         const id = (parseInt(data[0]))
@@ -37,24 +41,24 @@ const ListeIntervention = (props) =>{
         }
         if(userInputType !== "ALL" && userInputAssign !== "ALL") {
            if(userInputType === typeInterv && userInputAssign === "TRUE" && techName !== "Aucun" ) {
-               return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+               return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName} redirection={toDetailInter}/>
            }
             if(userInputType === typeInterv && userInputAssign === "FALSE" && techName === "Aucun" ) {
-                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName} redirection={toDetailInter}/>
             }
        } else if(userInputType === "ALL" && userInputAssign !== "ALL") {
             if(userInputAssign === "TRUE" && techName !== "Aucun" ) {
-                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName} redirection={toDetailInter}/>
             }
             if(userInputAssign === "FALSE" && techName === "Aucun" ) {
-                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName} redirection={toDetailInter}/>
             }
         }else if(userInputType !== "ALL" && userInputAssign === "ALL") {
             if(userInputType === typeInterv) {
-                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+                return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName} redirection={toDetailInter}/>
             }
         }else {
-            return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName}/>
+            return <Intervention key={id} id={id} salle={salle} typeIntervention={typeInterv} SAName={saName} techName={techName} redirection={toDetailInter}/>
 
         }
     })
@@ -78,14 +82,11 @@ const ListeIntervention = (props) =>{
                 <option value={"FALSE"}>Non-assigné</option>
             </select>
             <div>
-                {renderInterventions}
-                {/*{Interventions.length === 0? <p>Loading...</p>:renderInterventions}*/}
+                {Interventions.length === 0? <p>Loading...</p>:renderInterventions}
             </div>
         </>
     )
 }
 
-ListeIntervention.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
+
 export default ListeIntervention

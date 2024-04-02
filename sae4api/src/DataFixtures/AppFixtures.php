@@ -20,20 +20,27 @@ class AppFixtures extends Fixture
         // =============================== //
 
 
-        $ref1 = new User();
-        $ref1->setUsername("PERSONNEL");
-        $ref1->setPassword("$2y$13$/Bpyv7s0SexmSOxxaINszOMmtqs7iSIFINdzBfKAQUAmHMthVAKzS");
-        $ref1->setRole("PERSONNEL");
-        $this->addReference('ref1',$ref1 );
-        $manager->persist($ref1);
+        $perso1 = new User();
+        $perso1->setUsername("perso1");
+        $perso1->setPassword("9eeaf4902b379db3cd7a428c48afabb328a00d88ff152453e029d484780dc2f8");
+        $perso1->setRole("PERSONNEL");
+        $this->addReference('ref1',$perso1 );
+        $manager->persist($perso1);
 
         $tech1 = new User();
-        $tech1->setUsername("tec1");
-        //hash le password avec php bin/console security:hash-password
-        $tech1->setPassword("$2y$13$/Bpyv7s0SexmSOxxaINszOMmtqs7iSIFINdzBfKAQUAmHMthVAKzS");
+        $tech1->setUsername("tech1");
+        $tech1->setPassword("3ac40463b419a7de590185c7121f0bfbe411d6168699e8014f521b050b1d6653");
         $tech1->setRole("TECHNICIEN");
         $this->addReference('tech1',$tech1 );
         $manager->persist($tech1);
+
+        $tech2 = new User();
+        $tech2->setUsername("tech2");
+        $tech2->setPassword("3ac40463b419a7de590185c7121f0bfbe411d6168699e8014f521b050b1d6653");
+        $tech2->setRole("TECHNICIEN");
+        $this->addReference('tech2',$tech2 );
+        $manager->persist($tech2);
+
 
         // =============================== //
         //      Création des salles        //

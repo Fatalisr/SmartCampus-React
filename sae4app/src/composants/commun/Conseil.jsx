@@ -36,7 +36,7 @@ const Conseil = (props) =>{
             }
         }
 
-        if(tempCapture.valeur > aimedTemperature+2)
+        if(tempCapture.valeur < aimedTemperature - 2)
         {
             if(co2Capture.valeur > 1000 || humCapture.valeur > 70)
             {
@@ -47,7 +47,7 @@ const Conseil = (props) =>{
                 advice = "Allumez ou augmentez le chauffage et vérifiez que les fenêtres sont fermées.";
             }
         }
-        else if(tempCapture.valeur < aimedTemperature-2)
+        else if(tempCapture.valeur > aimedTemperature + 2)
         {
             if(humCapture.valeur > 70 || co2Capture.valeur > 1000)
             {

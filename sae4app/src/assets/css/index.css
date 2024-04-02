@@ -15,7 +15,14 @@ header{
   display: flex;
   width: 100%;
   background-color: rgba(52, 159, 6, 0.4);
+  align-items: center;
+  justify-content: space-between;
 }
+header div{
+  display: flex;
+  flex-direction: row;
+}
+
 header img{
   width: 60px;
   height: 60px;
@@ -24,8 +31,10 @@ header img{
 header h2{
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 90%;
+}
+header button{
+  height: 40%;
+  margin: 0 2%;
 }
 
 button {
