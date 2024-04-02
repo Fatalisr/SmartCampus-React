@@ -17,20 +17,20 @@ const ListeIntervention = (props) =>{
         const response = fetchInterventions();
         const responseData = response["hydra:member"]
         response.then((responseData) => {
-            setInterventions(Object.values(responseData["hydra:member"]));
+            setInterventions(responseData);
         });
     }, []);
 
 
     const renderInterventions = Interventions.map((intervention) => {
         const data = Object.values(intervention)
-        const id = (parseInt(data[0].slice(-1)))
-        const typeInterv = data[3]
-        const saName = Object.values(data[5])[2]
-        const salle = Object.values(data[5])[3]["name"]
+        const id = (parseInt(data[0]))
+        const typeInterv = data[1]
+        const saName = Object.values(data[3])[0]
+        const salle = Object.values(Object.values(data[3])[1])[0]
         let techName = ""
-        if(data.length === 7) {
-            techName = Object.values(data[6])[3]
+        if(data.length === 5) {
+            techName = Object.values(data[4])[1]
         }else {
             techName = "Aucun"
 
@@ -78,7 +78,8 @@ const ListeIntervention = (props) =>{
                 <option value={"FALSE"}>Non-assigné</option>
             </select>
             <div>
-                {Interventions.length === 0? <p>Loading...</p>:renderInterventions}
+                {renderInterventions}
+                {/*{Interventions.length === 0? <p>Loading...</p>:renderInterventions}*/}
             </div>
         </>
     )

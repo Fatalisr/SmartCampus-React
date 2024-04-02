@@ -10,7 +10,7 @@ export const getInterventions = async() =>{
     try{
         const response = await fetch(`${baseUrlApiBD}/interventions`,{
             headers: {
-                accept : "application/ld+json",
+                accept : "application/json",
             }
         });
 
@@ -30,7 +30,7 @@ export const getInterventionID = async(id) =>{
     try{
         const response = await fetch(`${baseUrlApiBD}/interventions/${id}`,{
             headers: {
-                accept : "application/ld+json",
+                accept : "application/json",
             }
         });
 
