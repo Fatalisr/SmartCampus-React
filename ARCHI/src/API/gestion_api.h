@@ -14,7 +14,11 @@
 /*                           Fonctions                             */
 /*-----------------------------------------------------------------*/
 
-void sendToApi();
+
+
+void sendToApiTemp();
+void sendToApiCo2();
+void sendToApiHum();
 
 /*
 * @brief create the json object
@@ -28,10 +32,7 @@ String convertTOJson(t value, String type);
  */
 void initClock();
 
-/*
-* @brief get a char * reprsenting the date
-*/
-char * getDate();
+
 
 /*-----------------------------------------------------------------*/
 /*                             Tasks                               */

@@ -91,7 +91,8 @@ void displayValuesOnScreenTask(void* parameter){
   loadingDisplay(10, 40);
   for(;;){
     display.clear();
-    displayScreen(10, 10,getDate());
+    getDate();
+    displayScreen(10, 10,date);
     displaySensorValue(10, 28, "Temperature", "°C", temperature);
     displaySensorValue(10, 40, "Humidité", "%", humidity);
     displaySensorValue(10, 52, "CO2", "ppm", ppm);

@@ -10,7 +10,7 @@
 
 ESP32Time rtc(3600);  // GMT+1
 const long gmtOffset_sec = 0;
-const int daylightOffset_sec = 3600;
+const int daylightOffset_sec = 0;
 // Lien vers le serveur ntp
 const char* ntpServer = "pool.ntp.org";
 
@@ -31,9 +31,8 @@ void initClock()
 }
 
 // Retourne la date courante
-char * getDate()
+void getDate()
 {
-    char * date = (char*)malloc(20);
     snprintf(date, 20,
             PSTR("%04u-%02u-%02u %02u:%02u:%02u"),
             rtc.getYear(),
@@ -43,5 +42,4 @@ char * getDate()
             rtc.getMinute(),
             rtc.getSecond()
             );
-  return date;
 }
