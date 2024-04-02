@@ -86,7 +86,7 @@ const char* ssid = "eduroam"; // Eduroam SSID
 /*                              Ecran                              */
 /*-----------------------------------------------------------------*/
 
-const int screenTimeout = 5000;
+const int screenTimeout = 10000;
 
 /*-----------------------------------------------------------------*/
 /*                      PRIORITÉ DES TASKS                         */
