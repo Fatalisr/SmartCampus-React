@@ -1,6 +1,10 @@
 import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
-import {getInterventionID, patchInterventionID} from "../../utilitaires/services/DatabaseApiService.js";
+import {
+    getInterventionID,
+    patchEndInterventionID,
+    patchInterventionID
+} from "../../utilitaires/services/DatabaseApiService.js";
 import "../../assets/css/technicien/detailInter.css"
 const DetailIntervention = (props) =>{
 
@@ -23,6 +27,20 @@ const DetailIntervention = (props) =>{
 
     }
 
+
+
+    const [report, setReport] = useState("");
+
+    const handleChangeReport = (e) => {
+        setReport(e.target.value)
+    };
+
+    const validation = (id) => {
+        if(report != "")
+        {
+            patchEndInterventionID(id, report).then(r => window.location= '/technicien/')
+        }
+    }
 
     const renderIntervention = () => {
         const data = Object.values(Intervention)
@@ -64,12 +82,17 @@ const DetailIntervention = (props) =>{
         const renderValid = () => {
 
 
-            if(sessionStorage.getItem('id_user')===techName)
+            if(sessionStorage.getItem('id_user')===idtech.toString())
             {
                 return(
-                    <div>
-                        <button>Valider</button>
-                    </div>)
+                    <>
+                        <div>
+                            <input placeholder={"Message"} onChange={handleChangeReport}/>
+                        </div>
+                        <div>
+                            <button onClick={() => validation(id)}>Valider</button>
+                        </div>
+                    </>)
             }
         }
 
