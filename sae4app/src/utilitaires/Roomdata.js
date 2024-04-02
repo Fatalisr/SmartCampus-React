@@ -13,4 +13,4 @@ const Rooms = [
     }
 ];
 
-export const rooms$ = new Promise((resolve, reject) => setTimeout(resolve, 200, Rooms));
+export const rooms$ = new Promise((resolve) => setTimeout(resolve, 200, Rooms));

@@ -17,7 +17,7 @@ class Room
     private ?int $id = null;
 
     #[ORM\Column(length: 15)]
-    #[Groups(['intervention:item:read'])]
+    #[Groups(['intervention:item:read','intervention:read'])]
     private ?string $name = null;
 
     #[ORM\Column]

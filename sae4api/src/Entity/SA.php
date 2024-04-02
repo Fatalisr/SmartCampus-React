@@ -26,7 +26,7 @@ class SA
     private ?string $state = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[Groups(['intervention:item:read'])]
+    #[Groups(['intervention:item:read','intervention:read'])]
     private ?Room $currentRoom = null;
 
     #[ORM\ManyToOne]

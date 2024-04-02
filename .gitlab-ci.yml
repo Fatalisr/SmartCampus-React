@@ -1,16 +1,15 @@
 stages: # Ici on déclare toutes nos étapes
-  - test
   - sonar
   - linter
 
 linter-job:
   stage: linter
-  image: node:16
+  image: node:20
   tags: 
     - docker
   script:
-    - "cd sae4app"
-    - "yarn lint"
+    - "yarn --cwd ./sae4app install"
+    - "yarn --cwd ./sae4app lint"
 sonarqube-check:
   stage: sonar
   image:
