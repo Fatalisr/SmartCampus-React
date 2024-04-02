@@ -82,8 +82,7 @@ const ListeIntervention = (props) =>{
                 <option value={"FALSE"}>Non-assigné</option>
             </select>
             <div>
-                {renderInterventions}
-                {/*{Interventions.length === 0? <p>Loading...</p>:renderInterventions}*/}
+                {Interventions.length === 0? <p>Loading...</p>:renderInterventions}
             </div>
         </>
     )

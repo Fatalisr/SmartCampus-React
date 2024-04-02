@@ -43,3 +43,26 @@ export const getInterventionID = async(id) =>{
         throw `Error in getCaptures request : ${error.name}, ${error.message}` ;
     }
 }
+
+
+export const patchInterventionID = async(id, idnewtech) =>{
+
+    try{
+        const response = await fetch(`${baseUrlApiBD}/intervention/setTechnician/${id}`,{
+            method: "PATCH",
+            headers: {
+                accept : "application/json",
+
+            },
+            body: JSON.stringify({
+                "tech": "https://localhost:8000/api/users/" + idnewtech
+            })
+        });
+
+        const jsonData = response.json();
+        return await jsonData;
+    }
+    catch (error){
+        throw `Error in patchCaptures request : ${error.name}, ${error.message}` ;
+    }
+}

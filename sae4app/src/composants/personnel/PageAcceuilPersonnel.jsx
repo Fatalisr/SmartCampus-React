@@ -1,13 +1,12 @@
+import {Navigate} from "react-router-dom";
 import ListeSalles from "./ListeSalles.jsx";
-import {useEffect} from "react";
 
 
 const PageAcceuilPersonnel = () =>{
     return(
-        <>
-            <ListeSalles />
-        </>
-
+        sessionStorage.getItem('role')==="PERSONNEL"?
+            <ListeSalles />:
+            <Navigate to="/" />
     )
 }
 

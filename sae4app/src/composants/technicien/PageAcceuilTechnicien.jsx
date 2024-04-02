@@ -1,10 +1,11 @@
+
+import {Navigate} from "react-router-dom";
 import ListeIntervention from "./ListeInterventions.jsx";
 
-const PageAcceuilTechnicien = (props) =>{
+
+const PageAcceuilTechnicien = () =>{
     return(
-        <>
-            <ListeIntervention />
-        </>
+        sessionStorage.getItem('role')==="TECHNICIEN"?<ListeIntervention exampleProp={"temp"}/>:<Navigate to="/" />
     )
 }
 
