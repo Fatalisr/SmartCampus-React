@@ -21,8 +21,9 @@ const DonneesCapteur = (props) =>{
     }, [props.name]);
 
     const renderData = datas.map((data) => {
-        console.log(data[0].valeur)
-        return <div key={data[0].id} className="DonnesCapteurline">{data[0].nom} - {data[0].valeur}</div>;
+        if(data[0].localisation === props.name) {
+            return <div key={data[0].id} className="DonnesCapteurline">{data[0].nom} - {data[0].valeur}</div>;
+        }
     })
 
     return(
