@@ -36,11 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/technicien",
-        element: <PageAcceuilTechnicien exampleProp={"temp"}/>,
+        element: <PageAcceuilTechnicien />,
       },
       {
-        path: "/technicien/intervention",
-        element: <PageDetailIntervention exampleProp={"temp"}/>,
+        path: "/technicien/intervention/:id",
+        element: <PageDetailIntervention />,
       },
     ],
   },

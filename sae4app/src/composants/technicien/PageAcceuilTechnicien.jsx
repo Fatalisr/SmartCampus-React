@@ -1,16 +1,11 @@
-import PropTypes from "prop-types";
 import ListeIntervention from "./ListeInterventions.jsx";
 
 const PageAcceuilTechnicien = (props) =>{
-
     return(
         <>
-            <ListeIntervention exampleProp={"temp"}/>
+            <ListeIntervention />
         </>
     )
 }
 
-PageAcceuilTechnicien.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
 export default PageAcceuilTechnicien

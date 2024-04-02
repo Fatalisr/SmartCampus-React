@@ -1,13 +1,14 @@
-import PropTypes from "prop-types";
+import DetailIntervention from "./DetailIntervention.jsx";
+import { useParams } from 'react-router-dom'
 
 const PageDetailIntervention = (props) =>{
+    const { id } = useParams()
+
     return(
         <>
+            <DetailIntervention  id={id}/>
         </>
     )
 }
 
-PageDetailIntervention.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
 export default PageDetailIntervention
