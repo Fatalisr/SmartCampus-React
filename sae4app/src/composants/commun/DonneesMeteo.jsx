@@ -1,13 +1,19 @@
-import PropTypes from "prop-types";
+import {getMeteoData} from "../../utilitaires/services/DataAPIMeteoService.js";
 
 const DonneesMeteo = (props) =>{
-    return(
-        <>
-        </>
-    )
-}
+    const data = getMeteoData()
 
-DonneesMeteo.propTypes = {
-    exampleProp: PropTypes.string.isRequired,
-}
+    return (
+        <div>
+            <h1>Données météo</h1>
+            <ul>
+                <li> {data.temperature} °C</li>
+                <li> {data.humidite} %</li>
+                <li> {data.wind} km/h</li>
+                <li> {data.code} </li>
+            </ul>
+        </div>
+    );
+};
+
 export default DonneesMeteo
