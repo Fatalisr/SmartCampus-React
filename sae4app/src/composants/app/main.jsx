@@ -1,17 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '../../assets/css/index.css'
-import {
-  createBrowserRouter, Navigate,
-  RouterProvider,
-} from "react-router-dom"
-import PageConnexion from "./PageConnexion.jsx";
-import PageAcceuilUsager from "../usager/PageAcceuilUsager.jsx";
-import PageAcceuilPersonnel from "../personnel/PageAcceuilPersonnel.jsx";
-import PageAcceuilTechnicien from "../technicien/PageAcceuilTechnicien.jsx";
-import PageDetailSallePersonnel from "../personnel/PageDetailSallePersonnel.jsx";
-import PageDetailIntervention from "../technicien/PageDetailIntervention.jsx";
-import Menu from "./Menu.jsx";
+import {createBrowserRouter, Navigate,RouterProvider, Routes,} from "react-router-dom"
+import PageConnexion from "./PageConnexion.jsx"
+import PageAcceuilUsager from "../usager/PageAcceuilUsager.jsx"
+import PageAcceuilPersonnel from "../personnel/PageAcceuilPersonnel.jsx"
+import PageAcceuilTechnicien from "../technicien/PageAcceuilTechnicien.jsx"
+import PageDetailSallePersonnel from "../personnel/PageDetailSallePersonnel.jsx"
+import PageDetailIntervention from "../technicien/PageDetailIntervention.jsx"
+import Menu from './Menu.jsx'
+
+
 
 const router = createBrowserRouter([
   {
@@ -29,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/personnel",
         element: <PageAcceuilPersonnel exampleProp={"temp"}/>,
+
       },
       {
         path: "/personnel/salle/:idSalle",
@@ -36,11 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/technicien",
-        element: <PageAcceuilTechnicien exampleProp={"temp"}/>,
+        element: <PageAcceuilTechnicien />,
       },
       {
-        path: "/technicien/intervention",
-        element: <PageDetailIntervention exampleProp={"temp"}/>,
+        path: "/technicien/intervention/:id",
+        element: <PageDetailIntervention />,
       },
     ],
   },

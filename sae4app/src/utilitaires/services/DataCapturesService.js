@@ -1,6 +1,7 @@
 // Imports necessary for the page
 
 import {baseUrlApiCapture, roomsDatabase} from "./config-api.js";
+import {useState} from "react";
 
 // Functions
 
@@ -137,6 +138,3 @@ export const getLastCaptures = async(room, lines = 0, dataType = "")=>{
         throw `Error in getCapturesLast request : ${error.name}, ${error.message}` ;
     }
 }
-
-
-

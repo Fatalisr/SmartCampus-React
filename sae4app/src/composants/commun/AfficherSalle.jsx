@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import DonneesCapteur from "./DonneesCapteur.jsx";
 import DonneesMeteo from "./DonneesMeteo.jsx";
-import ListeConseils from "./ListeConseils.jsx";
+import Conseil from "./Conseil.jsx";
 import "../../assets/css/commun/afficherSalle.css";
 
 const AfficherSalle = (props) =>{
@@ -10,7 +10,7 @@ const AfficherSalle = (props) =>{
         <>
             <DonneesCapteur name={props.name}/>
             <DonneesMeteo/>
-            <ListeConseils exampleProp={"temp"}/>
+            <Conseil room={props.name}/>
         </>
     )
 }
