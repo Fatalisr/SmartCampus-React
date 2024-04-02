@@ -18,11 +18,7 @@
 #include "Wifi/wifi.h"
 #include "LED/led.h"
 #include "Ecran/ecran.h"
-
-
-
-
-
+#include "Presence/presence.h"
 
 /*-----------------------------------------------------------------*/
 /*                              WIFI                               */
@@ -62,6 +58,18 @@ extern float humidity;
 
 extern int APIDelay;
 extern String ESPCurrentRoom;
+
+/*-----------------------------------------------------------------*/
+/*                              Presence                           */
+/*-----------------------------------------------------------------*/
+
+#define digital_pir_sensor 5 // connect to Pin 5 your motion sensor
+
+/*-----------------------------------------------------------------*/
+/*                              Ecran                              */
+/*-----------------------------------------------------------------*/
+
+extern const int screenTimeout;
 
 /*-----------------------------------------------------------------*/
 /*                              TASK                               */

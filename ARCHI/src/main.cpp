@@ -22,6 +22,7 @@ void setup()
     initCO2Sensor();
     initTempHumSensor();
     init_screen();
+    initPresence();
 
     Serial.println("End of Setup");
 
@@ -32,11 +33,11 @@ void setup()
     xTaskCreate(getCO2Task, "capture du CO2", 10000, NULL,CO2TaskPriority, NULL);
     xTaskCreate(getHumTempTask, "capture temp et humi", 10000, NULL, TempHumiTaskPriority, NULL);
     xTaskCreate(sendToAPITask, "envoie à l'api", 10000, NULL, APITaskPriority, NULL);
-    xTaskCreate(displayValuesOnScreenTask, "affichage a l'écran", 10000,NULL, screenTaskPriority, NULL);
 }
 
 void loop()
 {
+    SomeoneIsThere();
     //getCO2Value(ppm);
     //getHumTempvalue(humidity, temperature);
     //getDate();
