@@ -7,13 +7,13 @@ const DonneesCapteur = (props) =>{
 
     useEffect(() => {
         const fetchtemp= async() => {
-            return await getLastCaptures(1, "temp");
+            return await getLastCaptures(props.name, 1, "temp");
         }
         const fetchhumid = async() => {
-            return await getLastCaptures(1, "hum");
+            return await getLastCaptures(props.name, 1, "hum");
         }
         const fetchCO2 = async() => {
-            return await getLastCaptures(1, "co2");
+            return await getLastCaptures(props.name, 1, "co2");
         }
         Promise.all([fetchtemp(), fetchhumid(), fetchCO2()]).then((values) => {
             setData(values);

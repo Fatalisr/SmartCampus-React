@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react";
+import {baseUrlMeteoApi, queriesApiMeteo} from "./config-api.js";
 
-const baseUrlMeteoApi = "https://api.open-meteo.com/v1/forecast?latitude=46.1631&longitude=-1.1522&current=temperature_2m,relative_humidity_2m,precipitation,rain,weather_code,wind_speed_10m&timezone=Europe%2FBerlin";
 export const getMeteoData = () => {
     const [datas, setData] = useState([]);
 
     const getdata = async() => {
         try {
-            const response = await fetch(baseUrlMeteoApi, {
+            console.log(baseUrlMeteoApi);
+            const response = await fetch(`${baseUrlMeteoApi}${queriesApiMeteo}`, {
                 headers: {
                     accept: "application/ld+json",
                 }
