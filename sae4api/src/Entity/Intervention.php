@@ -34,7 +34,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Patch(
             uriTemplate: '/intervention/setEndIntervention/{id}',
-            description: "Permet le passage d'une intervention a l'état de fin (passage du state a 'FINI', set de l'endingDate et du report)",
+            description: "Permet le passage d'une intervention à l'état de fin (passage du state a 'FINI', set de l'endingDate et du report)",
             normalizationContext: ['groups' => ['intervention:patch:end']]
         )
     ]

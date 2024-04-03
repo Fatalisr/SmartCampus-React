@@ -25,7 +25,7 @@ class InterventionRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('i')
             ->andWhere('i.state = :val')
-            ->setParameter('val','EN_COURS')
+            ->setParameter('val', 'EN_COURS')
             ->getQuery()
             ->getResult()
             ;

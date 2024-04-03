@@ -28,7 +28,7 @@ class RoomRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('r')
             ->innerJoin(SA::class, 'sa')
-            ->andWhere( 'r.id = sa.currentRoom')
+            ->andWhere('r.id = sa.currentRoom')
             ->orderBy('r.name', 'ASC')
             ->getQuery()
             ->getResult();
