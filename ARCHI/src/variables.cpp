@@ -104,14 +104,6 @@ void setESPCurrentRoom(String currentRoom){
 /*                              WIFI                               */
 /*-----------------------------------------------------------------*/
 
-char* convertTest(String test) {
-    char * retour = "";
-    for(int i = 0 ; i < test.length() ; i++){
-        retour = retour + test[i];
-    }
-    return retour;
-}
-
 String ssid = "eduroam"; //SSID
 String identity = "ugay"; //Login
 String username = "ugay"; //Login
