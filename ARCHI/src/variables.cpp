@@ -112,7 +112,7 @@ char* convertTest(String test) {
     return retour;
 }
 
-String ssid = ""; //SSID
+String ssid = "eduroam"; //SSID
 String identity = "ugay"; //Login
 String username = "ugay"; //Login
 String password = "LaceulalTelephone7!"; // Password
