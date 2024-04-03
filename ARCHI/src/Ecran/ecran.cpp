@@ -81,6 +81,9 @@ void SomeoneIsThere(){
     display.displayOff(); // Éteindre l'écran
     vTaskDelete(displayTaskHandle); // Supprimer la tâche
   }
+  else{
+    delay(15);
+  }
 }
 
 /*-----------------------------------------------------------------*/

@@ -129,7 +129,7 @@ void setWifi(String newSSID, String newLogin,String newPassword){
 /*                              Ecran                              */
 /*-----------------------------------------------------------------*/
 
-const int screenTimeout = 10000;
+const int screenTimeout = 60000;
 
 /*-----------------------------------------------------------------*/
 /*                      PRIORITÉ DES TASKS                         */
