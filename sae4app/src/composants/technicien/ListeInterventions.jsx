@@ -4,7 +4,7 @@ import '../../assets/css/index.css'
 import {getInterventions} from "../../utilitaires/services/DatabaseApiService.js";
 
 
-const ListeIntervention = (props) =>{
+const ListeIntervention = () =>{
     const [Interventions,setInterventions] = useState([])
     const [userInputType,setUserInputType] = useState("ALL")
     const [userInputAssign,setUserInputAssign] = useState("ALL")
@@ -14,7 +14,6 @@ const ListeIntervention = (props) =>{
             return await getInterventions();
         }
         const response = fetchInterventions();
-        const responseData = response["hydra:member"]
         response.then((responseData) => {
             setInterventions(responseData);
         });

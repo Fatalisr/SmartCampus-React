@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {baseUrlMeteoApi, queriesApiMeteo} from "./config-api.js";
 
 export const getMeteoData = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [datas, setData] = useState([]);
 
     const getdata = async() => {
@@ -18,6 +19,7 @@ export const getMeteoData = () => {
             throw `Error in getMeteoData request : ${error.name}, ${error.message}`;
         }
     }
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         const renderDonneesAsync = async () => {
             const donnees = await getdata();

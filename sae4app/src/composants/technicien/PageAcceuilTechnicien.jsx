@@ -1,4 +1,3 @@
-
 import {Navigate} from "react-router-dom";
 import ListeIntervention from "./ListeInterventions.jsx";
 

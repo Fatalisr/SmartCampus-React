@@ -19,10 +19,9 @@ const SelecteurSalle = (props) =>{
 
     return(
         <>
-            <div>
-                <label>Selecteur :</label>
+            <div id="selecteurSalle">
                 <select onChange={props.handleChange}>
-                    <option value={"0"}>-- Select one --</option>
+                    <option value={"0"}>Choisisez une salle</option>
                     {renderRoom}
                 </select>
             </div>

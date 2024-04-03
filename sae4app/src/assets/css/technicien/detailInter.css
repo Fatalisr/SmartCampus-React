@@ -1,22 +1,23 @@
-.detailInter
-{
+.detailInter {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 
-.infoSA
-{
+.infoSA {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    border-radius: 20px;
+    margin: 10px;
+    background-color: #c3e1b2;
+}
+.infoSA p{
+    font-size: large;
 }
 
-
-.message
-{
-
+.message {
     margin: 10px;
 }
 

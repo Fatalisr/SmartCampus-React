@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import { useState} from "react";
 import Selecteursalle from "./SelecteurSalle.jsx";
 import AfficherSalle from "../commun/AfficherSalle.jsx";
+import '../../assets/css/usager/pageAcceuilUsager.css'
 
-
-const PageAccueilUsager = (props) =>{
+const PageAccueilUsager = () =>{
     const [name, setname] = useState("0")
 
     function handleChange(e) {
@@ -11,10 +11,10 @@ const PageAccueilUsager = (props) =>{
     }
 
     return(
-        <>
+        <div id="divAcceuilUsager">
             <Selecteursalle handleChange={handleChange}/>
-            {name !== "0" ? <AfficherSalle name={name}/> : <span>Veuillez choisir une salle pour voir les données</span>}
-        </>
+            {name !== "0" ? <AfficherSalle room={name}/> : <span id="noRoomSpan">Veuillez choisir une salle pour voir les données</span>}
+        </div>
     )
 }
 export default PageAccueilUsager

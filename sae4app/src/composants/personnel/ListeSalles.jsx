@@ -1,9 +1,8 @@
 import {useEffect, useState} from "react";
-import {salles$} from "../../utilitaires/data_salles.js";
-
 import Salle from "./Salle.jsx";
-
 import "./../../assets/css/listeSalle.css"
+import {getRooms} from "../../utilitaires/services/DatabaseApiService.js";
+
 
 const ListeSalles = () =>{
     const [salles, setSalles] = useState([]);
@@ -26,11 +25,11 @@ const ListeSalles = () =>{
     };
 
     useEffect(() => {
-        salles$.then((salles) => {
-            setSalles(salles);
+        getRooms().then((salle) => {
+            setSalles(salle);
         });
-    }, []);
 
+    }, []); // Liste des "dépendances" du useEffect
 
     const toDetail = (nomSalle) => {
         window.location= '/personnel/salle/' + nomSalle
@@ -41,28 +40,23 @@ const ListeSalles = () =>{
     }
 
     const renderFile = salles.sort(compareSalles).map(salle => {
-        if (filterMin <= salle.nbAlerte24h && filterMax >= salle.nbAlerte24h && salle.nom.toLowerCase().includes(filterName.toLowerCase()))
-            return <Salle key={salle.id} id={salle.id} nom={salle.nom} nbAlerte24h={salle.nbAlerte24h} redirection={toDetail}/>;
+        /*if (filterMin <= salle.nbAlerte24h && filterMax >= salle.nbAlerte24h &&*/ if(salle.name.toLowerCase().includes(filterName.toLowerCase()))
+            return <Salle key={salle.id} id={salle.id} nom={salle.name} redirection={toDetail}/>;
     })
 
     return(
         <>
             <div className={"PageListeSalle"}>
                 <h2>Liste des Salles</h2>
-
                 <div className={"input"}>
                     <input type="text" className="search-input" placeholder="Rechercher" onChange={handleChangeName}/>
                     <input type="text" className="search-input" placeholder="Minimum"   onChange={handleChangeMin}/>
                     <input type="text" className="search-input" placeholder="Maximum"   onChange={handleChangeMax}/>
                 </div>
-
                 <div className={"listSalle"}>
                     {renderFile}
                 </div>
-
-        </div>
-
-
+            </div>
         </>
     )
 }

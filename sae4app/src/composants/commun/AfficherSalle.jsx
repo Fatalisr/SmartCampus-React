@@ -7,15 +7,21 @@ import "../../assets/css/commun/afficherSalle.css";
 const AfficherSalle = (props) =>{
 
     return(
-        <>
-            <DonneesCapteur room={props.room}/>
-            <DonneesMeteo/>
+        <div id="divAfficherSalle">
+            <div id="divData">
+                <span style={{width:'40%', textAlign:"center"}}>Données de la salle</span>
+                <span style={{width:'40%', textAlign:"center"}}>Donnée météo</span>
+            </div>
+            <div id="divData">
+                <DonneesCapteur room={props.room}/>
+                <DonneesMeteo/>
+            </div>
             <Conseil room={props.room}/>
-        </>
+        </div>
     )
 }
 AfficherSalle.propTypes = {
-    idSalle: PropTypes.number.isRequired,
-    room: PropTypes.string.isRequired,
+    idSalle: PropTypes.number,
+    room: PropTypes.string,
 }
 export default AfficherSalle

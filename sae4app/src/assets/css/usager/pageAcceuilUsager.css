@@ -1,0 +1,89 @@
+#divAcceuilUsager{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#selecteurSalle{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+#selecteurSalle select{
+    width: 50%;
+    height: 80%;
+}
+
+#noRoomSpan{
+    display: flex;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+#divAfficherSalle{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+}
+#divData{
+    display: flex;
+    width: 100%;
+
+    justify-content: space-evenly;
+}
+
+
+#DonneesCapteurdiv{
+    display: flex;
+    flex-direction: column;
+    background-color: #d2d2de;
+    border-radius: 20px;
+    width: 40%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.DonnesCapteurline{
+    display: flex;
+    width: 90%;
+    height: 20%;
+    margin: 10px 0;
+    border-radius: 10px;
+    align-items: center;
+    font-size: large;
+}
+
+.DonnesCapteurline img{
+    width: 40px;
+    height: 40px;
+    margin-right: 30px;
+}
+
+#donneeAPIMeteo{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    background-color: #d2d2de;
+    border-radius: 20px;
+}
+#donneeAPIMeteo span{
+    margin: 2px 0 7px 5px;
+}
+
+#divImg{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+}
+
+#divImg img{
+    width: 100px;
+    height: 100px;
+}

@@ -15,16 +15,13 @@ const DetailIntervention = (props) =>{
             return await getInterventionID(props.id);
         }
         const response = fetchIntervention();
-        const responseData = response["hydra:member"]
         response.then((responseData) => {
             setIntervention(responseData);
         });
     }, []);
 
-
     const patchInter = (id, idTech) => {
-        patchInterventionID(id, idTech).then(r => window.location= '/technicien/intervention/' + id)
-
+        patchInterventionID(id, idTech).then(() => window.location= '/technicien/intervention/' + id)
     }
 
 
@@ -36,9 +33,9 @@ const DetailIntervention = (props) =>{
     };
 
     const validation = (id) => {
-        if(report != "")
+        if(report !== "")
         {
-            patchEndInterventionID(id, report).then(r => window.location= '/technicien/')
+            patchEndInterventionID(id, report).then(() => window.location= '/technicien/')
         }
     }
 
@@ -66,7 +63,7 @@ const DetailIntervention = (props) =>{
         }
 
         const renderAssign = () => {
-            if(sessionStorage.getItem('id_user')==idtech.toString())
+            if(sessionStorage.getItem('id_user')===idtech.toString())
             {
                 return(
                         <button onClick={() => {patchInter(id, null)}}>Me désassigner</button>
@@ -74,20 +71,18 @@ const DetailIntervention = (props) =>{
             }
             else if(idtech===-1){
                 return(
-                    <button onClick={() => {patchInter(id, sessionStorage.getItem('id_user'))}}>M'assigner</button>)
+                    <button onClick={() => {patchInter(id, sessionStorage.getItem('id_user'))}}>M&apos;assigner</button>)
             }
         }
 
 
         const renderValid = () => {
-
-
             if(sessionStorage.getItem('id_user')===idtech.toString())
             {
                 return(
                     <>
                         <div>
-                            <input placeholder={"Message"} onChange={handleChangeReport}/>
+                            <textarea rows={10} cols={50} placeholder={"Message"} onChange={handleChangeReport}/>
                         </div>
                         <div>
                             <button onClick={() => validation(id)}>Valider</button>

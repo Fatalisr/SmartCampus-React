@@ -1,7 +1,6 @@
 // Imports necessary for the page
 
 import {baseUrlApiCapture, roomsDatabase} from "./config-api.js";
-import {useState} from "react";
 
 // Functions
 

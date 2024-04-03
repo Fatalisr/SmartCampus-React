@@ -3,7 +3,7 @@ import './../../assets/css/technicien/technicien.css'
 import './../../assets/css/index.css';
 
 const Intervention = (props) =>{
-    if(props.typeIntervention == "INSTALLATION"){
+    if(props.typeIntervention === "INSTALLATION"){
         return(
             <>
                     <div className={"flRow install"} onClick={() => {props.redirection(props.id)}}>
@@ -15,7 +15,7 @@ const Intervention = (props) =>{
             </>
         )
     }
-    if(props.typeIntervention == "MAINTENANCE"){
+    if(props.typeIntervention === "MAINTENANCE"){
         return(
             <>
                 <div className={"flRow maint"} onClick={() => {props.redirection(props.id)}}>
