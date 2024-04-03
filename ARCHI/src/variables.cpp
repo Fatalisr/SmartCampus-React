@@ -41,7 +41,7 @@ int compteurTemp = 0;
  float humidityEnvoye;
 
 /*-----------------------------------------------------------------*/
-/*            Ecart par rapport au dernier envoie                  */
+/*               Ecart par rapport au dernier envoi                */
 /*-----------------------------------------------------------------*/
 
 int ecartCo2 = 100;

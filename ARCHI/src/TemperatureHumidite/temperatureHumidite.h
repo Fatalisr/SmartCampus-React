@@ -12,7 +12,10 @@
 /*-----------------------------------------------------------------*/
 
 void initTempHumSensor();
-void getHumTempvalue(float & hum, float & temp);
+void getHumValue(float & hum);
+void getTempValue(float & temp);
+bool getValidityTemp(float & temp);
+bool getValidityHum(float & hum);
 
 
 /*-----------------------------------------------------------------*/

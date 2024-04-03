@@ -52,6 +52,19 @@ s16 getCO2Value(u16 &ppm)
   return err;
 }
 
+bool getValidityCO2(u16 &ppm)
+{
+  if(ppm >= 400 or ppm < 5000)
+  {
+    return true;
+  }
+  else
+  {
+    err_CO2 = getCO2Value(ppm);
+    return false;
+  }
+}
+
 /*-----------------------------------------------------------------*/
 /*                             Tasks                               */
 /*-----------------------------------------------------------------*/
@@ -61,16 +74,42 @@ void getCO2Task(void *parameter){
   err_CO2 = getCO2Value(ppm); 
   vTaskDelay(pdMS_TO_TICKS( 15000 )); 
     for(;;){
-        err_CO2 = getCO2Value(ppm); 
-        sommeCo2 += ppm;
-        compteurCo2 += 1;
-        if(ppm < ppmEnvoye - ecartCo2 or ppm > ppmEnvoye + ecartCo2)
-        {
-          ppmEnvoye = ppm;
-          sendToApiCo2();
-          sommeCo2 = 0;
-          compteurCo2 = 0;
+        err_CO2 = getCO2Value(ppm);
+        
+        int retryCO2 = 0;
+        while(!getValidityCO2(ppm) and retryCO2 < 2){
+          
+          vTaskDelay( pdMS_TO_TICKS( 2000 ) );
+          
+          retryCO2 += 1;
+          Serial.println("CO2 : Valeur invalide, on réessaye. Essai :");
+          Serial.println(retryCO2);
+          Serial.println(ppm);
         }
-        vTaskDelay( pdMS_TO_TICKS( 60000 ) );
+        
+        if(getValidityCO2)
+        {
+          compteurCo2 += 1;
+          sommeCo2 += ppm;
+          Serial.println("CO2 valide :");
+          Serial.println(ppm);
+          if(ppm < ppmEnvoye - ecartCo2 or ppm > ppmEnvoye + ecartCo2)  // On regarde l'écart avec la valeur précédente par rapport à la dernière valeur récupérée 
+          {
+            ppmEnvoye = ppm;
+            sendToApiCo2();
+            sommeCo2 = 0;
+            compteurCo2 = 0;
+          }
+          else
+          {
+            Serial.println("CO2 : Ecart trop faible avec valeur precedente, la capture n'a pas ete envoyee");
+          }
+        }
+        else
+        {
+          Serial.println("CO2 non-envoyé car la valeur n'est pas valide :");
+          Serial.println(ppm);
+        }
+        vTaskDelay( pdMS_TO_TICKS( 60000 ) ); // On attend une minute avant la prochaine capture
     }
 }

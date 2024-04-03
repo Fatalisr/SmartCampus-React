@@ -24,8 +24,7 @@ void initTempHumSensor()
     Serial.println("Init Hum/Temp OK");
 }
 
-// fonction de capture de l'humidité et de la temp
-void getHumTempvalue(float & hum, float & temp){
+void getTempValue(float & temp){
     sensors_event_t event;
 
     // Get temperature event and print its value.
@@ -38,10 +37,15 @@ void getHumTempvalue(float & hum, float & temp){
         temperature = event.temperature;
         ledTempOk = true; 
     }
+}
+
+// fonction de capture de l'humidité et de la temp
+void getHumValue(float & hum){
+    sensors_event_t event;
 
     // Get humidity event and print its value.
-        dht.humidity().getEvent(&event);
-    if (isnan(event.relative_humidity)) {
+    dht.humidity().getEvent(&event);
+    if(isnan(event.relative_humidity)){
         Serial.println(F("Error reading humidity!"));
         ledHumiOk = false; 
     }
@@ -51,37 +55,119 @@ void getHumTempvalue(float & hum, float & temp){
     }
 }
 
+bool getValidityTemp(float & temp){
+
+  bool tempValid = false;
+
+  if(temperature > -20 and temperature < 60)
+  {
+    tempValid = true;
+  }
+
+  if(!tempValid)
+  {
+    getTempValue(temp);
+  }
+
+  return tempValid;
+}
+
+bool getValidityHum(float & hum)
+{
+  bool humValid = false;
+
+  if(hum > 5 and hum < 99)
+  {
+    humValid = true;
+  }
+
+  if(!humValid)
+  {
+    getHumValue(hum);
+  }
+
+  return humValid;
+}
+
 /*-----------------------------------------------------------------*/
 /*                             Tasks                               */
 /*-----------------------------------------------------------------*/
 
 // Capture les valeurs et incremente les variables globales correspondante
 void getHumTempTask(void *parameter){
-    getHumTempvalue(humidity,temperature);
+    getHumValue(humidity);
+    getTempValue(temperature);
     vTaskDelay(pdMS_TO_TICKS( 20000 )); 
     for(;;){
-        getHumTempvalue(humidity,temperature);
+        getHumValue(humidity);
+        getTempValue(temperature);
+        bool humValid = getValidityHum(humidity);
+        bool tempValid = getValidityTemp(temperature);
 
-        sommeHum += humidity;
-        sommeTemp += temperature;
-
-        compteurHum += 1;
-        compteurTemp += 1;
-
-        if(humidity < humidityEnvoye - ecartHum or humidity > humidityEnvoye + ecartHum)
-        {
-          humidityEnvoye = humidity;
-          sendToApiHum();
-          sommeHum = 0;
-          compteurHum = 0;
+        int retryHum = 0;
+        
+        while(!humValid or retryHum < 2){
+            vTaskDelay( pdMS_TO_TICKS( 2000 ) );
+            humValid = getValidityHum(humidity);
+            retryHum += 1;
         }
-        if(temperature < temperatureEnvoye - ecartTemp or temperature > temperatureEnvoye + ecartTemp)
-        {
-          temperatureEnvoye = temperature;
-          sendToApiTemp();
-          sommeTemp = 0;
-          compteurTemp = 0;
+
+        int retryTemp = 0;
+        while(!tempValid or retryTemp < 2){
+            vTaskDelay( pdMS_TO_TICKS( 2000 ) );
+            tempValid = getValidityTemp(temperature);
+
+            retryTemp += 1;
         }
+        
+        if(humValid)
+        {
+            compteurHum += 1;
+            sommeHum += humidity;
+            Serial.println("Humidite valide :");
+            Serial.println(humidity);
+            if(humidity < humidityEnvoye - ecartHum or humidity > humidityEnvoye + ecartHum)
+            {
+                humidityEnvoye = humidity;
+                sendToApiHum();
+                sommeHum = 0;
+                compteurHum = 0;
+            }
+            else
+            {
+                Serial.println("Humidite : Ecart trop faible avec valeur precedente, la capture n'a pas ete envoyee");
+            }
+        }
+        else
+        {
+            Serial.println("Humitide non-envoyee car la valeur n'est pas valide :");
+            Serial.println(humidity);
+        }
+
+        if(tempValid)
+        {
+            Serial.println("Temperature valide :");
+            Serial.println(temperature);
+            compteurTemp += 1;
+            sommeTemp += temperature;
+            if(temperature < temperatureEnvoye - ecartTemp or temperature > temperatureEnvoye + ecartTemp)
+            {
+                temperatureEnvoye = temperature;
+                sendToApiTemp();
+                sommeTemp = 0;
+                compteurTemp = 0;
+            }
+            else
+            {
+                Serial.println("Temperature : Ecart trop faible avec valeur precedente, la capture n'a pas ete envoyee");
+            }
+        }
+        else
+        {
+            Serial.println("Temperature non-envoyee car la valeur n'est pas valide :");
+            Serial.println(temperature);
+        }
+        
         vTaskDelay(pdMS_TO_TICKS( 60000 )); 
     }
 }
