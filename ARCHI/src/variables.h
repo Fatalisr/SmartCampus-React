@@ -19,6 +19,7 @@
 #include "LED/led.h"
 #include "Ecran/ecran.h"
 #include "Date/date.h"
+#include "Presence/presence.h"
 
 
 /*-----------------------------------------------------------------*/
@@ -122,6 +123,18 @@ void setAPIDelay(int returnFrequence);
 void setESPCurrentRoom(String currentRoom);
 
 /*-----------------------------------------------------------------*/
+/*                              Presence                           */
+/*-----------------------------------------------------------------*/
+
+#define digital_pir_sensor 5 // connect to Pin 5 your motion sensor
+
+/*-----------------------------------------------------------------*/
+/*                              Ecran                              */
+/*-----------------------------------------------------------------*/
+
+extern const int screenTimeout;
+
+/*-----------------------------------------------------------------*/
 /*                              TASK                               */
 /*-----------------------------------------------------------------*/
 
@@ -132,3 +145,4 @@ extern int TempHumiTaskPriority;
 extern int APITaskPriority;
 
 #endif
+

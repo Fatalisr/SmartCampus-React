@@ -1,0 +1,18 @@
+.flRow {
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 5px;
+}
+.maint {
+    background-color: #d43934;
+    border-radius : 5px;
+}
+.install {
+    background-color: #fca130;
+    border-radius : 5px;
+}
+HTML {
+    overflow: hidden;
+}

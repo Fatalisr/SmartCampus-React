@@ -112,7 +112,7 @@ char* convertTest(String test) {
     return retour;
 }
 
-String ssid = ""; //SSID
+String ssid = "eduroam"; //SSID
 String identity = "ugay"; //Login
 String username = "ugay"; //Login
 String password = "LaceulalTelephone7!"; // Password
@@ -133,6 +133,12 @@ const char* PARAM_INPUT_5 = "temp";
 const char* PARAM_INPUT_6 = "hum";
 const char* PARAM_INPUT_7 = "co2";
 const char* PARAM_INPUT_8 = "freq";
+
+/*-----------------------------------------------------------------*/
+/*                              Ecran                              */
+/*-----------------------------------------------------------------*/
+
+const int screenTimeout = 60000;
 
 /*-----------------------------------------------------------------*/
 /*                      PRIORITÉ DES TASKS                         */

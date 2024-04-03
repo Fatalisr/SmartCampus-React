@@ -13,9 +13,6 @@
 
 SSD1306Wire display(0x3c, SDA, SCL);
 
-
-
-
 /*-----------------------------------------------------------------*/
 /*                           Fonctions                             */
 /*-----------------------------------------------------------------*/
@@ -68,6 +65,25 @@ void loadingDisplay(int x, int y){
   display.display();
   display.drawStringMaxWidth(x, y, 128,"Chargement ...");
   delay(500);
+}
+
+void SomeoneIsThere(){
+  if (get_Motion_value()) { // Si le capteur de présence détecte une présence
+    display.displayOn(); // Allumer l'écran
+
+    TaskHandle_t displayTaskHandle; // Déclaration de la variable pour stocker le handle de la tâche
+
+    // Création de la tâche pour afficher les valeurs sur l'écran
+    xTaskCreate(&displayValuesOnScreenTask, "affichage a l'écran", 10000, NULL, screenTaskPriority, &displayTaskHandle);
+
+    delay(screenTimeout); // Attendre pendant la durée de temporisation définie
+
+    display.displayOff(); // Éteindre l'écran
+    vTaskDelete(displayTaskHandle); // Supprimer la tâche
+  }
+  else{
+    delay(15);
+  }
 }
 
 /*-----------------------------------------------------------------*/

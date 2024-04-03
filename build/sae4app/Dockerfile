@@ -28,7 +28,7 @@ RUN if [ ! -z ${USER_NAME} ] && [ ! -z ${GROUP_NAME} ] && [ ${USER_ID:-0} -ne 0 
     chown -R ${USER_NAME}:${GROUP_NAME} /app \
     ; fi
 
-# Login to container as non-root user 
+# Login to container as non-root user
 USER ${USER_ID:-0}:${GROUP_ID:-0}
 
 EXPOSE 5173
