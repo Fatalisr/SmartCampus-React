@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import {useState} from "react";
-import {useEffect} from "react";
+import {useState,useEffect} from "react";
 import {getRooms} from "../../utilitaires/services/DatabaseApiService.js";
 
 const SelecteurSalle = (props) =>{
