@@ -32,7 +32,7 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['intervention:read','intervention:item:read'])]
+    #[Groups(['users:read','intervention:read','intervention:item:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 15)]

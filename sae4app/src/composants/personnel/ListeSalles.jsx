@@ -32,8 +32,8 @@ const ListeSalles = () =>{
     }, []);
 
 
-    const toDetail = (id) => {
-        window.location= '/personnel/salle/' + id
+    const toDetail = (nomSalle) => {
+        window.location= '/personnel/salle/' + nomSalle
     };
 
     const compareSalles = (a, b) =>{
@@ -42,7 +42,7 @@ const ListeSalles = () =>{
 
     const renderFile = salles.sort(compareSalles).map(salle => {
         if (filterMin <= salle.nbAlerte24h && filterMax >= salle.nbAlerte24h && salle.nom.toLowerCase().includes(filterName.toLowerCase()))
-            return <Salle id={salle.id} nom={salle.nom} nbAlerte24h={salle.nbAlerte24h} redirection={toDetail}/>;
+            return <Salle key={salle.id} id={salle.id} nom={salle.nom} nbAlerte24h={salle.nbAlerte24h} redirection={toDetail}/>;
     })
 
     return(

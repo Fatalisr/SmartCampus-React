@@ -5,25 +5,40 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\RoomRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Get;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: RoomRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            description: "Retourne toute les salles",
+            normalizationContext: ['groups' =>['room:read']],
+        ),
+        new Get(
+            description: "Retourne les infos de la salle",
+            normalizationContext: ['groups' =>['room:item:read']],
+        )
+    ]
+)]
 class Room
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['room:read','room:item:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 15)]
-    #[Groups(['intervention:item:read'])]
+    #[Groups(['intervention:item:read','intervention:read','room:read','room:item:read'])]
     private ?string $name = null;
 
     #[ORM\Column]
     private ?int $nbComputer = null;
 
     #[ORM\Column(length: 1, options: ['check' => "check (facing in ('N','S','E','W'))"])]
+    #[Groups(['room:item:read'])]
     private ?string $facing = null;
 
     public function getId(): ?int

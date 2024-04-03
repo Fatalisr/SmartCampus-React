@@ -1,7 +1,4 @@
-import data from "./config-api.json"
-
-const baseUrlApiBD = "http://localhost:8000/api";
-
+import {baseUrlApiBD} from "./config-api.js";
 
 /*
  * getInterventions : asynchronous function that returns a promise containing json data
@@ -10,10 +7,9 @@ const baseUrlApiBD = "http://localhost:8000/api";
 export const getInterventions = async() =>{
 
     try{
-        console.log(baseUrlApiBD);
         const response = await fetch(`${baseUrlApiBD}/interventions`,{
             headers: {
-                accept : "application/ld+json",
+                accept : "application/json",
             }
         });
 
@@ -33,7 +29,7 @@ export const getInterventionID = async(id) =>{
     try{
         const response = await fetch(`${baseUrlApiBD}/interventions/${id}`,{
             headers: {
-                accept : "application/ld+json",
+                accept : "application/json",
             }
         });
 
@@ -41,6 +37,6 @@ export const getInterventionID = async(id) =>{
         return await jsonData;
     }
     catch (error){
-        throw `Error in getCaptures request : ${error.name}, ${error.message}` ;
+        throw `Error in getInterventionID request : ${error.name}, ${error.message}` ;
     }
 }

@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SARepository::class)]
-#[ApiResource]
 class SA
 {
     #[ORM\Id]
@@ -26,7 +25,7 @@ class SA
     private ?string $state = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[Groups(['intervention:item:read'])]
+    #[Groups(['intervention:item:read','intervention:read'])]
     private ?Room $currentRoom = null;
 
     #[ORM\ManyToOne]

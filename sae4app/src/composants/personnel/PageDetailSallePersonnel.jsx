@@ -9,7 +9,7 @@ import fleche_gauche from '../../assets/img/fleche_gauche.png'
 import door from "../../assets/img/door.png"
 
 const PageDetailSallePersonnel = () =>{
-    const { idSalle } = useParams()
+    const { nomSalle } = useParams()
     const [alertOrDetail, setAlertOrDetails] = useState('alert')
     const handleChange = (value) => {
         setAlertOrDetails(value)
@@ -36,9 +36,13 @@ const PageDetailSallePersonnel = () =>{
                 }
             </div>
             <div id="div_display">
-                {alertOrDetail ==='alert'?
-                    <div className="slide-in-left"><ListeAlertes idSalle={parseInt(idSalle)}/></div>:
-                    <div className="slide-in-right"><AfficherSalle idSalle={parseInt(idSalle)}/></div>
+
+                {alertOrDetail === 'alert' ?
+                    <div className="slide-in-left">
+                        <span style={{display:'flex',width:'100%',textAlign:'center',margin:'10px 0'}}> Cette page presente une liste des dernières alerte (dépassement des bornes) pour cette salle (max 30) </span>
+                        <ListeAlertes nomSalle={nomSalle}/>
+                    </div> :
+                    <div className="slide-in-right">composant en chantier</div>
                 }
             </div>
         </>
