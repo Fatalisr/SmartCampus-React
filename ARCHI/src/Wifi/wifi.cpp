@@ -16,7 +16,7 @@ int counter;//Compteur pour la connexion
 
 void connectedToWifi(){
     // Initialisation de la connexion avec les variables adequats
-    WiFi.begin(ssid, WPA2_AUTH_PEAP, EAP_IDENTITY, EAP_USERNAME, EAP_PASSWORD); 
+    WiFi.begin(ssid, WPA2_AUTH_PEAP, identity, username, password); 
     Serial.println("Tentative de Connexion");
 
     // Gestion du temps de connexion

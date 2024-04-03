@@ -54,6 +54,11 @@ float ecartTemp = 0.3;
 
 u16 ppm;
 s16 err_CO2;
+bool sendCO2 = true;
+
+void setSendCO2(bool value){
+    sendCO2 = value;
+}
 
 /*-----------------------------------------------------------------*/
 /*               Capteur de temperature/humidité                   */
@@ -61,6 +66,16 @@ s16 err_CO2;
 
 float temperature;
 float humidity;
+
+bool sendTemperature = true;
+bool sendHumidity = true;
+
+void setSendTemperature(bool value){
+    sendTemperature = value;
+}
+void setSendHumidity(bool value){
+    sendHumidity = value;
+}
 
 
 /*-----------------------------------------------------------------*/
@@ -73,14 +88,42 @@ char * date = (char*)malloc(20);
 /*                              API                                */
 /*-----------------------------------------------------------------*/
 
-int APIDelay = 3600000; // Temps d'attente entre chaque envoie a l'API
+int APIDelay = 300000; // Temps d'attente entre chaque envoie a l'API
 String ESPCurrentRoom = "D004"; // Salle de notre SA
+
+void setAPIDelay(int returnFrequence){
+    APIDelay = returnFrequence;
+}
+
+void setESPCurrentRoom(String currentRoom){
+    ESPCurrentRoom = currentRoom;
+}
+
 
 /*-----------------------------------------------------------------*/
 /*                              WIFI                               */
 /*-----------------------------------------------------------------*/
 
-const char* ssid = "eduroam"; // Eduroam SSID
+char* convertTest(String test) {
+    char * retour = "";
+    for(int i = 0 ; i < test.length() ; i++){
+        retour = retour + test[i];
+    }
+    return retour;
+}
+
+String ssid = ""; //SSID
+String identity = "ugay"; //Login
+String username = "ugay"; //Login
+String password = "LaceulalTelephone7!"; // Password
+
+void setWifi(String newSSID, String newLogin,String newPassword){
+    ssid = newSSID;
+    identity = newLogin;
+    username = newLogin;
+    password = newPassword;
+}
+
 
 /*-----------------------------------------------------------------*/
 /*                              Ecran                              */
