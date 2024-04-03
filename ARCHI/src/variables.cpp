@@ -124,6 +124,15 @@ void setWifi(String newSSID, String newLogin,String newPassword){
     password = newPassword;
 }
 
+/* Champ du form à récup */
+const char* PARAM_INPUT_1 = "SSID";
+const char* PARAM_INPUT_2 = "user";
+const char* PARAM_INPUT_3 = "password";
+const char* PARAM_INPUT_4 = "salle";
+const char* PARAM_INPUT_5 = "temp";
+const char* PARAM_INPUT_6 = "hum";
+const char* PARAM_INPUT_7 = "co2";
+const char* PARAM_INPUT_8 = "freq";
 
 /*-----------------------------------------------------------------*/
 /*                      PRIORITÉ DES TASKS                         */
