@@ -3,32 +3,38 @@ import {getLastCaptures} from "../../utilitaires/services/DataCapturesService.js
 import { useEffect, useState } from "react";
 import "../../assets/css/commun/afficherSalle.css";
 const DonneesCapteur = (props) =>{
+    // useState permettant de récupérer les données
     const [datas, setData] = useState([]);
 
-    useEffect(() => {
-        const fetchtemp= async() => {
-            return await getLastCaptures(props.name, 1, "temp");
-        }
-        const fetchhumid = async() => {
-            return await getLastCaptures(props.name, 1, "hum");
-        }
-        const fetchCO2 = async() => {
-            return await getLastCaptures(props.name, 1, "co2");
-        }
-        Promise.all([fetchtemp(), fetchhumid(), fetchCO2()]).then((values) => {
-            setData(values);
-        });
-    }, [props.name]);
+    // Fonction asynchrone récupérant la dernière donnée de température remontée
+    const fetchTemp= async() => {
+        return await getLastCaptures(props.room, 1, "temp");
+    }
+    // Fonction asynchrone récupérant la dernière donnée d'humidité remontée
+    const fetchHumid = async() => {
+        return await getLastCaptures(props.room, 1, "hum");
+    }
+    // Fonction asynchrone récupérant la dernière donnée de CO2 remontée
+    const fetchCO2 = async() => {
+        return await getLastCaptures(props.room, 1, "co2");
+    }
 
+    useEffect(() => {
+        // Récupération de toutes les promises créées par les fonctions ci-dessus grâce au useState
+        Promise.all([fetchTemp(), fetchHumid(), fetchCO2()]).then((values) => {
+            const fvalues = values.flat();
+            setCaptures(fvalues);
+        });
+    }, [props.room]);
+
+    //fonction qui permet de d'afficher les données contenus dans la liste datas
     const renderData = datas.map((data) => {
-        if(data[0].localisation === props.name) {
-            return <div key={data[0].id} className="DonnesCapteurline">{data[0].nom} - {data[0].valeur}</div>;
-        }
+        return <div key={data.id} className="DonnesCapteurline">{data.nom} - {data.valeur}</div>;
     })
 
     return(
         <>
-            <h1> Données {props.name}</h1>
+            <h1> Données {props.room}</h1>
             <div id="DonneesCapteurdiv">
                 {renderData}
             </div>
@@ -37,6 +43,6 @@ const DonneesCapteur = (props) =>{
 }
 
 DonneesCapteur.propTypes = {
-    name: PropTypes.string.isRequired,
+    room: PropTypes.string.isRequired,
 }
 export default DonneesCapteur

@@ -41,6 +41,25 @@ export const getInterventionID = async(id) =>{
     }
 }
 
+/*
+ * getInterventions : asynchronous function that returns a promise containing json data
+ * Sends a HTTP GET request to the /api/interventions route of our API.
+ */
+export const getRooms = async() => {
+
+    try {
+        const response = await fetch(`${baseUrlApiBD}/rooms`, {
+            headers: {
+                accept: "application/json",
+            }
+        });
+
+        const jsonData = response.json();
+        return await jsonData;
+    } catch (error) {
+        throw `Error in getRooms request : ${error.name}, ${error.message}`;
+    }
+}
 
 export const patchInterventionID = async(id, idnewtech) =>{
 

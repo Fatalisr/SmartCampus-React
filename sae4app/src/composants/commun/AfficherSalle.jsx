@@ -8,15 +8,14 @@ const AfficherSalle = (props) =>{
 
     return(
         <>
-            <DonneesCapteur name={props.name}/>
+            <DonneesCapteur room={props.room}/>
             <DonneesMeteo/>
-            <Conseil room={props.name}/>
+            <Conseil room={props.room}/>
         </>
     )
 }
 AfficherSalle.propTypes = {
     idSalle: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-
+    room: PropTypes.string.isRequired,
 }
 export default AfficherSalle
