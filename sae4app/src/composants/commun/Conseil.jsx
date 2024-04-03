@@ -19,7 +19,7 @@ const Conseil = (props) =>{
         let humCapture = true;
         let co2Capture = true;
 
-        for(var capture of captures)
+        for(let capture of captures)
         {
             if(capture.nom === "temp")  // Valeur de température anormalement basse
             {
