@@ -1,0 +1,23 @@
+#include <Preferences.h>
+Preferences preferences;
+void setupPref(String ssid, String user, String password) {
+	String ssidSave = preferences.getString("ssid", "");
+	String userSave = preferences.getString("user", "");
+  	String passwordSave = preferences.getString("password", "");
+	if (ssidSave == "" || passwordSave == "" || passwordSave == ""){
+		Serial.println("No values saved for ssid or password");
+		preferences.begin("credentials", false);
+		preferences.putString("ssid","def");
+		preferences.putString("user","def");
+		preferences.putString("password","def");
+		preferences.end();
+  	}
+
+}
+void writerPref(String key, String value) {
+	preferences.begin("credentials", false);
+	const char* k = key.c_str();
+	const char* v = value.c_str();
+	preferences.putString(k,v);
+	preferences.end();
+}
