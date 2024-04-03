@@ -15,6 +15,7 @@ const AfficherSalle = (props) =>{
     )
 }
 AfficherSalle.propTypes = {
+    idSalle: PropTypes.number.isRequired,
     room: PropTypes.string.isRequired,
 }
 export default AfficherSalle
