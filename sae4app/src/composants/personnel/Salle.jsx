@@ -6,26 +6,26 @@ const Salle = (props) =>{
     if(props.nbAlerte24h >= 3) {
         return (
             <>
-                <button onClick={() => {props.redirection(props.id)}} className={"rouge"}> <img src={door} alt={"ff"} className={"doorImg"} /> <span> {props.nom} </span><span>{props.nbAlerte24h} alertes</span></button>
+                <button onClick={() => {props.redirection(props.nom)}} className={"rouge"}> <img src={door} alt={"ff"} className={"doorImg"} /> <span> {props.nom} </span><span>{props.nbAlerte24h} alertes</span></button>
             </>
             )
     }
-    else if(props.nbAlerte24h == 1) {
+    else if(props.nbAlerte24h === 1) {
         return (
             <>
-                <button onClick={() => {props.redirection(props.id)}} className={"orange"}> <img src={door} alt={"ff"} className={"doorImg"} /> <span>  {props.nom} </span> <span> {props.nbAlerte24h} alerte </span></button>
+                <button onClick={() => {props.redirection(props.nom)}} className={"orange"}> <img src={door} alt={"ff"} className={"doorImg"} /> <span>  {props.nom} </span> <span> {props.nbAlerte24h} alerte </span></button>
             </>)
     }
 
-    else if(props.nbAlerte24h == 2) {
+    else if(props.nbAlerte24h === 2) {
         return (
             <>
-                <button onClick={() => {props.redirection(props.id)}} className={"orange"}> <img src={door} alt={"ff"} className={"doorImg"} /> <span>{props.nom} </span><span>{props.nbAlerte24h} alertes </span></button>
+                <button onClick={() => {props.redirection(props.nom)}} className={"orange"}> <img src={door} alt={"ff"} className={"doorImg"} /> <span>{props.nom} </span><span>{props.nbAlerte24h} alertes </span></button>
             </>)
     }
     return (
         <>
-            <button onClick={() => {props.redirection(props.id)}} className={"vert"}> <img src={door} alt={"ff"} className={"doorImg"} /> <span> {props.nom} </span><span>{props.nbAlerte24h} alerte</span></button>
+            <button onClick={() => {props.redirection(props.nom)}} className={"vert"}> <img src={door} alt={"ff"} className={"doorImg"} /> <span> {props.nom} </span><span>{props.nbAlerte24h} alerte</span></button>
         </>
     )
 }

@@ -32,8 +32,8 @@ const ListeSalles = () =>{
     }, []);
 
 
-    const toDetail = (id) => {
-        window.location= '/personnel/salle/' + id
+    const toDetail = (nomSalle) => {
+        window.location= '/personnel/salle/' + nomSalle
     };
 
     const compareSalles = (a, b) =>{
