@@ -1,0 +1,116 @@
+#returnBtn{
+    margin: 2%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#returnBtn img{
+    width: 20px;
+    height: 20px;
+    padding-right: 2px;
+}
+#displayBtnsDiv{
+    display: flex;
+    margin: 2% 1%;
+}
+#displayBtnsDiv button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+#displayBtnsDiv div{
+    width: 100%;
+    justify-items: center;
+}
+#displayBtnsDiv button img{
+    width: 50px;
+    height: 50px;
+}
+#displayDetailsRoomBtn{
+    width: 40%;
+    margin-left: 60%;
+}
+#displayAlertsRoomBtn{
+    width: 40%;
+    margin-right: 60%;
+}
+#div_display{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+.slide-in-left {
+    width: 90%;
+    height: 400px;
+    animation: slideInLeft 0.5s forwards;
+}
+
+.slide-in-right {
+    width: 90%;
+    height: 400px;
+    animation: slideInRight 0.5s forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+#listeAlerteDiv{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+}
+
+.alert_div{
+    display: flex;
+    width: 96%;
+    height: 15%;
+    align-items: center;
+    background-color: rgba(255,0,0,.6);
+    border-radius: 30px;
+    margin: 10px 0;
+}
+
+.alert_div span{
+    display: flex;
+    align-items: center;
+}
+
+.alertData{
+    width: 25%;
+    font-size: x-large;
+    justify-content: center;
+}
+
+.alertDate{
+    width: 30%;
+    font-size: large;
+    justify-content: center;
+}
+
+.alertValeur{
+    width: 40%;+
+    font-size: large;
+}

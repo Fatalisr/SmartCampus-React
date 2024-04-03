@@ -1,0 +1,70 @@
+html{
+  width: 100%;
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-image: url("../img/fond_page_connexion.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+header{
+  display: flex;
+  width: 100%;
+  background-color: rgba(52, 159, 6, 0.4);
+  align-items: center;
+  justify-content: space-between;
+}
+header div{
+  display: flex;
+  flex-direction: row;
+}
+
+header img{
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+}
+header h2{
+  display: flex;
+  align-items: center;
+}
+header button{
+  height: 40%;
+  margin: 0 2%;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

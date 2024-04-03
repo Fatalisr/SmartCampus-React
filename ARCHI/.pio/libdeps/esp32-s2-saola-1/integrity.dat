@@ -1,0 +1,9 @@
+arduino-libraries/ArduinoHttpClient@^0.5.0
+adafruit/DHT sensor library@^1.4.6
+kitesurfer1404/WS2812FX@^1.4.2
+lib/AsyncTCP-master.zip
+thingpulse/ESP8266 and ESP32 OLED driver for SSD1306 displays@^4.4.1
+seeed-studio/Grove SGP30_Gas_Sensor@^1.0.0
+bblanchon/ArduinoJson@^6.21.4
+lib/ESPAsyncWebServer-master.zip
+fbiego/ESP32Time@^2.0.4

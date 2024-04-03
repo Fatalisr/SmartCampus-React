@@ -18,8 +18,9 @@
 #include "Wifi/wifi.h"
 #include "LED/led.h"
 #include "Ecran/ecran.h"
-#include "Presence/presence.h"
 #include "Date/date.h"
+#include "Presence/presence.h"
+
 
 /*-----------------------------------------------------------------*/
 /*                              WIFI                               */
@@ -29,6 +30,16 @@ extern String identity; //Login
 extern String username; //Login
 extern String password; //Eduroam password
 extern String ssid; 
+
+/* Champ du form à récup */
+extern const char* PARAM_INPUT_1;
+extern const char* PARAM_INPUT_2;
+extern const char* PARAM_INPUT_3;
+extern const char* PARAM_INPUT_4;
+extern const char* PARAM_INPUT_5;
+extern const char* PARAM_INPUT_6;
+extern const char* PARAM_INPUT_7;
+extern const char* PARAM_INPUT_8;
 
 void setWifi(String ssid, String login, String password);
 
@@ -134,3 +145,4 @@ extern int TempHumiTaskPriority;
 extern int APITaskPriority;
 
 #endif
+
